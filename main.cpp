@@ -5,6 +5,38 @@ using namespace std;
 //function เมนูทั้งหมด
 
 //function เมนู 1
+void restaurant()
+{
+    int choice;
+
+    cout << "- Select Restaurant -";
+    cout << "Press 1 Arr Han Tam Sang Tee Noi";
+    cout << "Press 2 Khao Man Kai";
+    cout << "Press 3 Gueytiew";
+    cout << "Press 4 Drink Shop";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        cout << "- Arr Han Tam Sang Tee Noi -";
+
+    }
+    else if(choice == 2)
+    {
+        cout << "- Khao Man Kai -";
+
+    }
+    else if(choice == 3)
+    {
+        cout << "- Gueytiew -";
+        
+    }
+    else if(choice == 4)
+    {
+        cout << "- Drink Shop -";
+        
+    }
+}
 
 //function เมนู 2
 void restaurant_menu1() {
@@ -45,5 +77,5 @@ void drink_shop_menu4() {
 }
 
 int main() {
- 
+ cout << "TEST TEST";
 }
