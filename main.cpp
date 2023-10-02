@@ -6,7 +6,7 @@ using namespace std;
 
 //function เมนู 1
 
-//function เมนู 2
+//function เมนู 2 tt
 void restaurant_menu1() {
     cout << "Press 1 Phat Kra Phrao Mu 50 Bath" << endl;
     cout << "Press 2 Khao phat Khai 50 Bath" << endl;
