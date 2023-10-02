@@ -8,9 +8,6 @@ using namespace std;
 
 //function เมนู 2
 
-//function เมนู 3
-
 
 int main() {
- cout << "hello";
 }
