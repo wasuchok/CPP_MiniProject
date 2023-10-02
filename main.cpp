@@ -6,6 +6,9 @@ using namespace std;
 
 //function เมนู 1
 
+//function เมนู 2
+
+
 int main() {
  cout << "TEE Wasuchok";
 }
