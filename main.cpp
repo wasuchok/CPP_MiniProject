@@ -7,5 +7,5 @@ using namespace std;
 //function เมนู 1
 
 int main() {
-
+ cout << "asdasd";
 }
