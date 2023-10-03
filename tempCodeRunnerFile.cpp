@@ -2,7 +2,7 @@
 using namespace std;
 
 bool check_status = false;
-int restaurant_menu;
+int restaurant_menu, total = 0;
 
 void alert_message(string msg) {
     cout << "------------------------------" << endl;
@@ -34,12 +34,12 @@ void restaurant_list() {
 }
 
 void restaurant_menu1() {
-    cout << "Press 1 Phat Kra Phrao Mu 50 Bath" << endl;
-    cout << "Press 2 Khao phat Khai 50 Bath" << endl;
-    cout << "Press 3 Phat Phong Kra Ri Thale 60 Bath" << endl;
-    cout << "Press 4 Khao Khaichiao Mu Sap 50 Bath" << endl;
-    cout << "Press 5 Suki Haeng Mu 50 Bath" << endl;
-    cout << "Press 6 Suki Nam Thale 60 Bath" << endl;
+    cout << "Press 1 Phat Kra Phrao" << endl;
+    cout << "Press 2 Khao phat Khai" << endl;
+    cout << "Press 3 Phat Phong Kra Ri" << endl;
+    cout << "Press 4 Khao Khaichiao" << endl;
+    cout << "Press 5 Suki Haeng" << endl;
+    cout << "Press 6 Suki Nam" << endl;
     cout << "Press 7 Khao Plao 10 Bath" << endl;
     cout << "Press 0 backward" << endl;
 
@@ -47,6 +47,9 @@ void restaurant_menu1() {
 
     cout << "Please select food >> ", cin >> choice_restaurant_menu1;
 
+    if(choice_restaurant_menu1 == 0) {
+        
+    }
     
 }
 
@@ -80,12 +83,10 @@ void menu_list() {
 
 
 void restaurant_menu2() {
-    cout << "Press 1 Khaomankai Tom 50 Bath" << endl;
-    cout << "Press 2 Khaoman Kai Thot 60 Bath" << endl;
-    cout << "Press 3 Khao Kai Yang 55 Bath" << endl;
-    cout << "Press 4 Khao Mu Krop 70 Bath" << endl;
-    cout << "Press 5 Khao Khluk Kra Pi 50 Bath" << endl;
-    cout << "Press 6 Khao Mudaeng 55 Bath" << endl;
+    cout << "Press 1 Khaoman kai" << endl;
+    cout << "Press 2 Khao Mu Krop 70 Bath" << endl;
+    cout << "Press 3 Khao Khluk Kra Pi 50 Bath" << endl;
+    cout << "Press 4 Khao Mudaeng 55 Bath" << endl;
     cout << "Press 0 backward" << endl;
 }
 
