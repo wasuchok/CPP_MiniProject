@@ -52,10 +52,91 @@ void restaurant_menu1() {
 
 void restaurant_menu2() {
     cout << "Press 1 Khaoman kai" << endl;
-    cout << "Press 2 Khao Mu Krop 70 Bath" << endl;
-    cout << "Press 3 Khao Khluk Kra Pi 50 Bath" << endl;
-    cout << "Press 4 Khao Mudaeng 55 Bath" << endl;
+    cout << "Press 2 Khao Mudaeng 50 Bath" << endl;
+    cout << "Press 3 Khao MuKrop 55 Bath" << endl;
+    cout << "Press 4 Khao Khluk Kra Pi 50 Bath" << endl;
+    cout << "Press 5 Khao MudaengMuKrop 55 Bath" << endl;
     cout << "Press 0 backward" << endl;
+
+    int restaurant_menu2;
+   
+    cout << "Please select food >> ", cin >> restaurant_menu2;
+
+    int restaurant_menu2_choice;
+    int restaurant_menu2_praphet;
+
+    if(restaurant_menu2 == 1){
+            cout << "Press 1 Khaoman Kai Tom  40 Bath" << endl;
+            cout << "Press 2 Khaoman Kai Yang 40 Bath" << endl;
+            cout << "Press 3 Khaoman Kai Thot 45 Bath" << endl;
+            cout << "Please select choice >> ", cin >> restaurant_menu2_choice;
+
+           
+
+                if(restaurant_menu2_choice == 1 || restaurant_menu2_choice == 2){
+                cout << "Press 1 Thammada" << endl;
+                cout << "Press 2 Phiset" << endl;
+                cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+                }
+                        if(restaurant_menu2_praphet == 1){
+                            total += 40;
+                        }else if(restaurant_menu2_praphet == 2){
+                            total += 40 + 10;
+                        }
+                            if(restaurant_menu2_choice == 3){
+                                cout << "Press 1 Thammada" << endl;
+                                cout << "Press 2 Phiset" << endl;
+                                cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+                            }
+                                if(restaurant_menu2_praphet == 1){
+                                    total += 45;
+                                }else if(restaurant_menu2_praphet == 2){
+                                    total += 45 + 10;
+                                }
+
+        }else if(restaurant_menu2 == 2){
+            cout << "Press 1 Thammada" << endl;
+            cout << "Press 2 Phiset" << endl;
+            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+
+                if(restaurant_menu2_praphet == 1){
+                    total += 50;
+                }else if(restaurant_menu2_praphet == 2){
+                    total += 50 + 10;
+                }
+
+        }else if(restaurant_menu2 == 3){
+            cout << "Press 1 Thammada" << endl;
+            cout << "Press 2 Phiset" << endl;
+            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+
+                if(restaurant_menu2_praphet == 1){
+                    total += 55;
+                }else if(restaurant_menu2_praphet == 2){
+                    total += 55 + 10;
+                }
+        }else if(restaurant_menu2 == 4){
+            cout << "Press 1 Thammada" << endl;
+            cout << "Press 2 Phiset" << endl;
+            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+
+                if(restaurant_menu2_praphet == 1){
+                    total += 50;
+                }else if(restaurant_menu2_praphet == 2){
+                    total += 50 + 10;
+                }
+        }else if(restaurant_menu2 == 5){
+            cout << "Press 1 Thammada" << endl;
+            cout << "Press 2 Phiset" << endl;
+            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
+
+                if(restaurant_menu2_praphet == 1){
+                    total += 55;
+                }else if(restaurant_menu2_praphet == 2){
+                    total += 55 + 10;
+                }
+        }
+
 }
 
 void additional_menu3_4() {
@@ -174,7 +255,7 @@ void menu_list() {
             if(restaurant_menu == 1) {
                 restaurant_menu1();
             } else if(restaurant_menu == 2) {
-
+                restaurant_menu2();
             } else if(restaurant_menu == 3) {
                 restaurant_menu3();
             }
