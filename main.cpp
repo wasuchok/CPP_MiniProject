@@ -16,13 +16,15 @@ void alert_message(string msg) {
 
 void restaurant_list() {
     int choice_restaurant_list;
-    cout << "- Select Restaurant -" << endl;
+    cout << "\n================= Restaurant =================" << endl;
     cout << "Press 1 Arr Han Tam Sang Tee Noi" << endl;
     cout << "Press 2 Khao Man Kai" << endl;
     cout << "Press 3 Gueytiew" << endl;
     cout << "Press 4 Drink Shop" << endl;
+    cout << "Press 0 Back" << endl;
+    cout << "===============================================" << endl;
 
-    cout << "Please select the desired restaurant >> ", cin >> choice_restaurant_list;
+    cout << "\nSelect Restaurant >> ", cin >> choice_restaurant_list;
 
     choice_restaurant_list == 1 ?
     restaurant_menu = 1
@@ -238,12 +240,14 @@ void menu_list() {
     while (true) {
     int choice_menu_list;
 
+    cout << "\n===========================" << endl;
     cout << "Press 1 Restaurant " << endl;
     cout << "Press 2 Food " << endl;
     cout << "Press 3 Check bill " << endl;
     cout << "Press 0 Close Program  " << endl;
+    cout << "===========================" << endl;
 
-    cout << "Please select menu >> ", cin >> choice_menu_list;
+    cout << "\nSelect Menu >> ", cin >> choice_menu_list;
 
     if(choice_menu_list == 0) {
         break;
@@ -257,6 +261,8 @@ void menu_list() {
                 restaurant_menu2();
             } else if(restaurant_menu == 3) {
                 restaurant_menu3();
+            } else if(restaurant_menu == 4) {
+                drink_shop_menu4();
             }
         } else {
             alert_message("Please choose a restaurant first.");
@@ -273,7 +279,9 @@ int main() {
 }
 
 void restaurant_menu1() {
-    cout << "----- Select Menu -----" << endl;
+    int choice_restaurant_menu1;
+
+    cout << "\n===== Arr Han Tam Sang Tee Noi =====" << endl;
     cout << "Press 1 Phat Kra Phrao" << endl;
     cout << "Press 2 Phat Ka Na" << endl;
     cout << "Press 3 Phat Prik Kaeng" << endl;
@@ -282,16 +290,15 @@ void restaurant_menu1() {
     cout << "Press 6 Khao Pad" << endl;
     cout << "Press 7 Khao Plao" << endl;
     cout << "Press 0 Back" << endl;
+    cout << "==================================" << endl;
 
-    int choice_restaurant_menu1;
-
-    cout << "Please Select Menu : ", cin >> choice_restaurant_menu1;
+    cout << "\nSelect Menu >> ", cin >> choice_restaurant_menu1;
 
     if(choice_restaurant_menu1 == 1)
     {
         int addon1;
 
-        cout << "\n- Phat Kra Phrao -" << endl;
+        cout << "\n======== Phat Kra Phrao ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -300,7 +307,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "================================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -311,7 +319,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -339,7 +347,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -367,7 +375,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -395,7 +403,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -423,7 +431,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -451,7 +459,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -479,7 +487,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -507,7 +515,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -531,7 +539,7 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Phat Ka Na -" << endl;
+        cout << "\n======== Phat Ka Na ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -540,7 +548,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "============================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -551,7 +560,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -579,7 +588,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -607,7 +616,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -635,7 +644,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -663,7 +672,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -691,7 +700,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -719,7 +728,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -747,7 +756,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -771,7 +780,7 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Phat Prik Kaeng -" << endl;
+        cout << "\n======== Phat Prik Kaeng ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -780,7 +789,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "=================================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -791,7 +801,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -819,7 +829,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -847,7 +857,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -875,7 +885,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -903,7 +913,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -931,7 +941,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -959,7 +969,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -987,7 +997,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1011,7 +1021,7 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Phat Phong Kra Ri -" << endl;
+        cout << "\n======== Phat Phong Kra Ri ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -1020,7 +1030,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "===================================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -1031,7 +1042,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1059,7 +1070,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1087,7 +1098,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1115,7 +1126,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1143,7 +1154,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1171,7 +1182,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1199,7 +1210,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1227,7 +1238,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1251,7 +1262,7 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Tod Kra Tiem -" << endl;
+        cout << "\n======== Tod Kra Tiem ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -1260,7 +1271,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "==============================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -1271,7 +1283,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1299,7 +1311,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1327,7 +1339,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1355,7 +1367,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1383,7 +1395,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1411,7 +1423,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1439,7 +1451,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1467,7 +1479,7 @@ void restaurant_menu1() {
             cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
             cout << "Press 3 Kab Khao" << endl;
             cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1491,7 +1503,7 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Khao Phat -" << endl;
+        cout << "\n======== Khao Phat ========" << endl;
         cout << "Press 1 Muu Sab - 40 Bath" << endl;
         cout << "Press 2 Muu Chin - 40 Bath" << endl;
         cout << "Press 3 Muu Krob - 40 Bath" << endl;
@@ -1500,7 +1512,8 @@ void restaurant_menu1() {
         cout << "Press 6 Kung - 45 Bath" << endl;
         cout << "Press 7 Pra Muek - 45 Bath" << endl;
         cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "============================" << endl;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -1509,7 +1522,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Muu Sab (40 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1527,7 +1540,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Muu Chin (40 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1545,7 +1558,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Muu Krob (40 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1563,7 +1576,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Kai (40 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1581,7 +1594,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Nue (40 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1599,7 +1612,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Kung (45 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1617,7 +1630,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Pra Muek (45 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1635,7 +1648,7 @@ void restaurant_menu1() {
             cout << "\n- Khao Phat Ruem Mit (45 Bath) -" << endl;
             cout << "Press 1 Tam Ma Da" << endl;
             cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
 
             if(addon2 == 1)
             {
@@ -1651,11 +1664,11 @@ void restaurant_menu1() {
     {
         int addon1;
 
-        cout << "\n- Khao Plao (10 Bath) -" << endl;
-        cout << "Press 1 No Addon" << endl;
+        cout << "\n======== Khao Plao ========" << endl;
+        cout << "Press 1 No Addon (10 Bath)" << endl;
         cout << "Press 2 Khai Dao (+10 Bath)" << endl;
         cout << "Press 3 Khai Jiew (+10 Bath)" << endl;
-        cout << "Please Addon : ", cin >> addon1;
+        cout << "\nPlease Addon >> ", cin >> addon1;
 
         if(addon1 == 1)
         {
@@ -1674,7 +1687,7 @@ void restaurant_menu1() {
             cout << "Press 2 Kung (+10 Bath)" << endl;
             cout << "Press 3 Cha-om (+10 Bath)" << endl;
             cout << "Press 4 Prik (+10 Bath)" << endl;
-            cout << "Please Addon : ", cin >> addon2;
+            cout << "\nPlease Addon >> ", cin >> addon2;
            
             if(addon2 == 1)
             {
@@ -1701,96 +1714,104 @@ void check_bill()
     int choice, promotion_code;
 
     cout << "\n---- Check Bill ----" << endl;
-    cout << "Total Price : " << total << endl;
+    cout << "Total Price >> " << total << endl;
 
     cout << "\nPress 1 Pay" << endl;
     cout << "Press 2 Promotion Code" << endl;
     cout << "Press 3 Cancel Order" << endl;
-    cout << "Press : ", cin >> choice;
+    cout << "Press 0 Back" << endl;
+    cout << "Press >> ", cin >> choice;
 
     if(choice == 1)
     {
         int choice2;
 
         cout << "\n- Confirm Order -" << endl;
-        cout << "Total Price : " << total << endl;
-        cout << "KBANK - 0862105192" << total << endl;
+        cout << "Total Price >> " << total << endl;
+        cout << "KBANK - 0862105192" << endl;
 
         cout << "\nPress 1 Payment Complete" << endl;
         cout << "Press 0 Back" << endl;
-        cout << "Press : ", cin >> choice2;
+        cout << "Press >> ", cin >> choice2;
 
         if(choice2 == 1)
         {
-            cout << "\nCooking. . ." << endl;
+            cout << "\n>> Cooking. . . <<" << endl;
 
             total = 0;
         }
     }
     else if(choice == 2)
     {
-        int choice2, total_code;
+        int choice2, total_code, discout;
         string promotion_code;
 
         cout << "\n- Promotion -" << endl;
-        cout << "Promotion Code : ", cin >> promotion_code;
+        cout << "Promotion Code >> ", cin >> promotion_code;
 
         if(promotion_code == "dc10")
         {
-            total_code = total * 10 / 100;
+            discout = total * 10 / 100;
+            total_code = total - discout;
 
             cout << "\n>> Discout 10% <<" << endl;
-            cout << "Total Price : " << total_code << endl;
-            cout << "KBANK - 0862105192" << total << endl;
+            cout << "Total Price >> " << total_code << endl;
+            cout << "KBANK - 0862105192" << endl;
 
             cout << "\nPress 1 Payment Complete" << endl;
             cout << "Press 0 Back" << endl;
-            cout << "Press : ", cin >> choice2;
+            cout << "Press >> ", cin >> choice2;
 
             if(choice2 == 1)
             {
-                cout << "\nCooking. . ." << endl;
+                cout << "\n>> Cooking. . . <<" << endl;
 
                 total = 0;
             }
         }
         else if(promotion_code == "dc25")
         {
-            total_code = total * 25 / 100;
+            discout = total * 25 / 100;
+            total_code = total - discout;
 
             cout << "\n>> Discout 25% <<" << endl;
-            cout << "Total Price : " << total_code << endl;
-            cout << "KBANK - 0862105192" << total << endl;
+            cout << "Total Price >> " << total_code << endl;
+            cout << "KBANK - 0862105192" << endl;
 
             cout << "\nPress 1 Payment Complete" << endl;
             cout << "Press 0 Back" << endl;
-            cout << "Press : ", cin >> choice2;
+            cout << "Press >> ", cin >> choice2;
 
             if(choice2 == 1)
             {
-                cout << "\nCooking. . ." << endl;
+                cout << "\n>> Cooking. . . <<" << endl;
 
                 total = 0;
             }
         }
         else if(promotion_code == "dc50")
         {
-            total_code = total * 50 / 100;
+            discout = total * 50 / 100;
+            total_code = total - discout;
 
             cout << "\n>> Discout 50% <<" << endl;
-            cout << "Total Price : " << total_code << endl;
-            cout << "KBANK - 0862105192" << total << endl;
+            cout << "Total Price >> " << total_code << endl;
+            cout << "KBANK - 0862105192" << endl;
 
             cout << "\nPress 1 Payment Complete" << endl;
             cout << "Press 0 Back" << endl;
-            cout << "Press : ", cin >> choice2;
+            cout << "Press >> ", cin >> choice2;
 
             if(choice2 == 1)
             {
-                cout << "\nCooking. . ." << endl;
+                cout << "\n>> Cooking. . . <<" << endl;
 
                 total = 0;
             }
+        }
+        else
+        {
+            cout << "Invalid Code!" << endl;
         }
     }
     else if(choice == 3)
@@ -1800,11 +1821,11 @@ void check_bill()
         cout << "\n- Confirm to Cancel Order! -" << endl;
         cout << "Press 1 Confirm" << endl;
         cout << "Press 0 Back" << endl;
-        cout << "Press : ", cin >> choice2;
+        cout << "Press >> ", cin >> choice2;
 
         if(choice2 == 1)
         {
-            cout << "\nOrder Canceled" << endl;
+            cout << "\n>> Order Canceled <<" << endl;
 
             total = 0;
         }
