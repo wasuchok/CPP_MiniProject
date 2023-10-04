@@ -241,7 +241,6 @@ void menu_list() {
     cout << "Press 1 Restaurant " << endl;
     cout << "Press 2 Food " << endl;
     cout << "Press 3 Check bill " << endl;
-    cout << "Total >> " << total << " Bath" << endl;
     cout << "Press 0 Close Program  " << endl;
 
     cout << "Please select menu >> ", cin >> choice_menu_list;
