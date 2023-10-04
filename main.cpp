@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void restaurant_menu1();
@@ -169,13 +170,13 @@ void additional_menu3_2() {
 }
 
 void additional_menu3_1(int price) {
-    cout << "----- Choose noodles -----" << endl;
-    cout << "Press 1 Sen Lek" << endl;
-    cout << "Press 2 Sen Yai" << endl;
-    cout << "Press 3 Sen Ma Ma" << endl;
-    cout << "Press 4 Sen Mi" << endl;
-    cout << "Press 0 Backward" << endl;
     total += price;
+    cout << "----- Choose noodles -----" << endl;
+    cout << "Press 1 Sen Lek\a" << price + 9 <<  endl;
+    cout << "Press 2 Sen Yai\b" << price + 9 << endl;
+    cout << "Press 3 Sen Ma Ma\f" << price + 7 << endl;
+    cout << "Press 4 Sen Mi " << price + 7 << endl;
+    cout << "Press 0 Backward" << endl;
 
     int choice_additional_menu3;
     cout << "Enter >> ", cin >> choice_additional_menu3;
@@ -201,11 +202,14 @@ void additional_menu3_1(int price) {
 }
 
 void restaurant_menu3() {
-    cout << "Press 1 Kuaitiao Nam Sai" << endl;
-    cout << "Press 2 Kuaitiao Namtok" << endl;
-    cout << "Press 3 Kuaitiao Tomyam" << endl;
-    cout << "Press 4 Kuaitiao Yentafo" << endl;
-    cout << "Press 0 backward" << endl;
+    cout << "-" << setw(90) << setfill('-') << "-" << endl;
+    cout << setw(55) << setfill(' ') <<  "Welcome to Restaurant 3" << endl;
+    cout << setfill(' ') << setw(30) << "Press 1" <<  setw(20) << setfill(' ') << "Kuaitiao Nam Sai" << endl;
+    cout << setfill(' ') << setw(30) << "Press 2" <<  setw(20) << setfill(' ') << "Kuaitiao Namtok" << endl;
+    cout << setfill(' ') << setw(30) << "Press 3" <<  setw(20) << setfill(' ') << "Kuaitiao Tomyam" << endl;
+    cout << setfill(' ') << setw(30) << "Press 4" <<  setw(20) << setfill(' ') << "Kuaitiao Yentafo" << endl;
+    cout << setfill(' ') << setw(30) << "Press 0" <<  setw(20) << setfill(' ') << "Backward" << endl;
+    cout << "+" << setw(90) << setfill('-') << "+" << endl;
 
     int choice_restaurant_menu3;
 
