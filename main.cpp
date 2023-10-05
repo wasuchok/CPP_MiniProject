@@ -132,69 +132,73 @@ void restaurant_menu2() {
 
 }
 
-void additional_menu3_4() {
-    cout << "----- Special or Normal -----" << endl;
-    cout << "Press 1 Special" << endl;
-    cout << "Press 2 Normal" << endl;
+void additional_menu3_4(int price) {
+    cout << "\n----- Special or Normal -----" << endl;
+    cout << "\nPress 1 Special + 5 Bath" << endl;
+    cout << "\nPress 2 Normal" << endl;
+    cout << "\nPress 0 Cancel" << endl;
+    cout << "\n----*-------%----+-----------" << endl;
 
     int choice_additional_menu3;
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        total += 10;
+        total += price + 10;
+        alert_message("Success");
     } else if(choice_additional_menu3 == 2) {
-        total += 5;
+        total += price;
+        alert_message("Success");
+    } else if(choice_additional_menu3 == 0) {
+        alert_message("Cancel");
     } else {
-        cout << "If not selected, it will be set to Normal." << endl;
-        total += 5;
+        total += price;
+        alert_message("If not selected, it will be set to Normal.");
     }
 }
 
-void additional_menu3_2() {
-    cout << "----- Choose meat -----" << endl;
-    cout << "Press 1 Mu Chin" << endl;
-    cout << "Press 2 Mu Sap" << endl;
-    cout << "Press 3 Nong Kai" << endl;
-    cout << "Press 4 Kai Chik" << endl;
+void additional_menu3_2(int price) {
+    cout << "\n----- Choose meat -----" << endl;
+    cout << "\nPress 1 Mu Chin " << price + 15 << " Bath" << endl;
+    cout << "\nPress 2 Mu Sap " << price + 10 << " Bath" << endl;
+    cout << "\nPress 3 Nong Kai " << price + 15 << " Bath" << endl;
+    cout << "\nPress 4 Kai Chik " << price + 10 << " Bath" << endl;
+    cout << "\n-----*----------*-----" << endl;
 
     int choice_additional_menu3;
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        total += 15;
+        additional_menu3_4(price + 15);
     } else if(choice_additional_menu3 == 2) {
-        total += 10;
+        additional_menu3_4(price + 10);
     } else if(choice_additional_menu3 == 3) {
-        total += 15;
+        additional_menu3_4(price + 15);
     } else if(choice_additional_menu3 == 4) {
-        total += 10;
+        additional_menu3_4(price + 10);
     }
 }
 
 void additional_menu3_1(int price) {
-    total += price;
-    cout << "----- Choose noodles -----" << endl;
-    cout << "Press 1 Sen Lek\a" << price + 9 <<  endl;
-    cout << "Press 2 Sen Yai\b" << price + 9 << endl;
-    cout << "Press 3 Sen Ma Ma\f" << price + 7 << endl;
-    cout << "Press 4 Sen Mi " << price + 7 << endl;
-    cout << "Press 0 Backward" << endl;
+    
+    cout << "\n----- Choose noodles -----" << endl;
+    cout << "\nPress 1 Sen Lek" <<  endl;
+    cout << "\nPress 2 Sen Yai"<< endl;
+    cout << "\nPress 3 Sen Ma Ma" << endl;
+    cout << "\nPress 4 Sen Mi " << endl;
+    cout << "\nPress 0 Backward" << endl;
+    cout << "\n-----+----------+-----" << endl;
 
     int choice_additional_menu3;
     cout << "Enter >> ", cin >> choice_additional_menu3;
     
     if(choice_additional_menu3 == 1) {
-        total += 9;
-        additional_menu3_2();
+        additional_menu3_2(price + 9);
     } else if(choice_additional_menu3 == 2) {
-        total += 9;
-        additional_menu3_2();
+        additional_menu3_2(price + 7);
     } else if(choice_additional_menu3 == 3) {
-        total += 7;
-        additional_menu3_2();
+        additional_menu3_2(price + 7);
     } else if(choice_additional_menu3 == 4) {
-        total += 7;
-        additional_menu3_2();
+        additional_menu3_2(price + 7);
     } else if(choice_additional_menu3 == 0) {
         total -= 40;
     } else {
