@@ -148,7 +148,7 @@ void additional_menu3_4(int price) {
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        additional_menu3_5(price + 15);
+        additional_menu3_5(price + 5);
     } else if(choice_additional_menu3 == 2) {
         additional_menu3_5(price);
     } else {
