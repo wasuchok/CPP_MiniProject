@@ -132,26 +132,27 @@ void restaurant_menu2() {
 
 }
 
+void additional_menu3_5(int price) {
+    int qty;
+    cout << "QTY >> ", cin >> qty;
+    total += price * qty;
+}
+
 void additional_menu3_4(int price) {
     cout << "\n----- Special or Normal -----" << endl;
     cout << "\nPress 1 Special + 5 Bath" << endl;
     cout << "\nPress 2 Normal" << endl;
-    cout << "\nPress 0 Cancel" << endl;
     cout << "\n----*-------%----+-----------" << endl;
 
     int choice_additional_menu3;
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        total += price + 10;
-        alert_message("Success");
+        additional_menu3_5(price + 15);
     } else if(choice_additional_menu3 == 2) {
-        total += price;
-        alert_message("Success");
-    } else if(choice_additional_menu3 == 0) {
-        alert_message("Cancel");
+        additional_menu3_5(price);
     } else {
-        total += price;
+        additional_menu3_5(price);
         alert_message("If not selected, it will be set to Normal.");
     }
 }
