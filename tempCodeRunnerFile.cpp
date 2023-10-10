@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -1904,3 +1905,6 @@ void check_bill(vector<order_type>* order_list) {
         }
     }
 }
+=======
+additional_menu3_2
+>>>>>>> Jame

@@ -273,6 +273,20 @@ void drink_shop_menu4() {
     cout << "Press 3 Namsom 15 Bath" << endl;
     cout << "Press 4 Namkhaeng Plao 5 Bath" << endl;
     cout << "Press 0 backward" << endl;
+
+    int drink_menu;
+   
+    cout << "Please select Drink Menu >> ", cin >> drink_menu;
+
+    if (drink_menu == 1){
+        total += 10;
+    }else if (drink_menu == 2){
+        total += 15;
+    }else if (drink_menu == 3){
+        total += 15;
+    }else if (drink_menu == 4){
+        total += 5;
+    }
 }
 
 void menu_list(vector<order_type>* order_list) {
