@@ -19,7 +19,11 @@ struct order_type {
     }
 };
 
-void restaurant_menu1();
+void restaurant_menu1(vector<order_type>* order_list);
+void additional_menu1_1();
+void additional_menu1_2(vector<order_type>* order_list, int addon2);
+void additional_menu1_3(vector<order_type>* order_list, int addon2);
+void additional_menu1_4(vector<order_type>& order_list,string name, int price);
 void check_bill(vector<order_type>* order_list);
 
 bool check_status = false;
@@ -326,7 +330,7 @@ void menu_list(vector<order_type> *order_list) {
     } else if(choice_menu_list == 2) {
         if(check_status) {
             if(restaurant_menu == 1) {
-                restaurant_menu1();
+                restaurant_menu1(order_list);
             } else if(restaurant_menu == 2) {
                 restaurant_menu2();
             } else if(restaurant_menu == 3) {
@@ -349,7 +353,74 @@ int main() {
     menu_list(&order_list);
 }
 
-void restaurant_menu1() {
+void additional_menu1_1()
+{
+    cout << "Press 1 Muu Sab - 40 Bath" << endl;
+    cout << "Press 2 Muu Chin - 40 Bath" << endl;
+    cout << "Press 3 Muu Krob - 40 Bath" << endl;
+    cout << "Press 4 Kai - 40 Bath" << endl;
+    cout << "Press 5 Nue - 40 Bath" << endl;
+    cout << "Press 6 Kung - 45 Bath" << endl;
+    cout << "Press 7 Pra Muek - 45 Bath" << endl;
+    cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+}
+
+void additional_menu1_2(vector<order_type>* order_list, int addon2)
+{
+    cout << "Press 1 Rad Khao" << endl;
+    cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
+    cout << "Press 3 Kab Khao" << endl;
+    cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
+    cout << "\nPlease Addon >> ", cin >> addon2;
+
+    if(addon2 == 1 || addon2 == 3)
+    {
+        additional_menu1_4(*order_list,"Phat Kra Phrao Tammada", 40);
+    }
+    else if(addon2 == 2 || addon2 == 4)
+    {
+        additional_menu1_4(*order_list,"Phat Kra Phrao Pi set", 45);
+    }
+}
+
+void additional_menu1_3(vector<order_type>* order_list, int addon2)
+{
+    cout << "Press 1 Rad Khao" << endl;
+    cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
+    cout << "Press 3 Kab Khao" << endl;
+    cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
+    cout << "\nPlease Addon >> ", cin >> addon2;
+
+    if(addon2 == 1 || addon2 == 3)
+    {
+        additional_menu1_4(*order_list,"Phat Kra Phrao Tammada", 45);
+    }
+    else if(addon2 == 2 || addon2 == 4)
+    {
+        additional_menu1_4(*order_list,"Phat Kra Phrao Pi set", 50);
+    }
+}
+
+void additional_menu1_4(vector<order_type>& order_list,string name, int price) {
+    int qty;
+    order_type order;
+    order.name = name;
+    order.price = price;
+    cout << "QTY >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void restaurant_menu1(vector<order_type>* order_list) {
     int choice_restaurant_menu1;
 
     cout << "\n===== Arr Han Tam Sang Tee Noi =====" << endl;
@@ -370,14 +441,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Phat Kra Phrao ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "================================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -386,224 +450,56 @@ void restaurant_menu1() {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Muu Sab (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+            additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 2)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Muu Chin (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+            additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 3)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Muu Krob (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+            additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 4)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Kai (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+            additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 5)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Nue (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+            additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 6)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Kung (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 7)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Pra Muek (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 8)
         {
             int addon2;
 
             cout << "\n- Phat Kra Phrao Ruem Mit (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
     }
     else if(choice_restaurant_menu1 == 2)
@@ -611,14 +507,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Phat Ka Na ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "============================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -627,224 +516,56 @@ void restaurant_menu1() {
             int addon2;
 
             cout << "\n- Phat Ka Na Muu Sab (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 2)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Muu Chin (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 3)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Muu Krob (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 4)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Kai (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 5)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Nue (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 6)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Kung (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 7)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Pra Muek (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 8)
         {
             int addon2;
 
             cout << "\n- Phat Ka Na Ruem Mit (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
     }
     else if(choice_restaurant_menu1 == 3)
@@ -852,14 +573,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Phat Prik Kaeng ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "=================================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -868,224 +582,56 @@ void restaurant_menu1() {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Muu Sab (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 2)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Muu Chin (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 3)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Muu Krob (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 4)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Kai (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 5)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Nue (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 6)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Kung (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 7)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Pra Muek (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 8)
         {
             int addon2;
 
             cout << "\n- Phat Prik Kaeng Ruem Mit (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
     }
     else if(choice_restaurant_menu1 == 4)
@@ -1093,14 +639,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Phat Phong Kra Ri ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "===================================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -1109,224 +648,56 @@ void restaurant_menu1() {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Muu Sab (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 2)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Muu Chin (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 3)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Muu Krob (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 4)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Kai (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 5)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Nue (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 6)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Kung (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 7)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Pra Muek (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 8)
         {
             int addon2;
 
             cout << "\n- Phat Phong Kra Ri Ruem Mit (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
     }
     else if(choice_restaurant_menu1 == 5)
@@ -1334,14 +705,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Tod Kra Tiem ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "==============================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -1350,224 +714,56 @@ void restaurant_menu1() {
             int addon2;
 
             cout << "\n- Muu Sab Tod Kra Tiem (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 2)
         {
             int addon2;
 
             cout << "\n- Muu Chin Tod Kra Tiem (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 3)
         {
             int addon2;
 
             cout << "\n- Muu Krob Tod Kra Tiem (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 4)
         {
             int addon2;
 
             cout << "\n- Kai Tod Kra Tiem (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 5)
         {
             int addon2;
 
             cout << "\n- Nue Tod Kra Tiem (40 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-            else if(addon2 == 3)
-            {
-                total += 40;
-            }
-            else if(addon2 == 4)
-            {
-                total += 45;
-            }
+           additional_menu1_2(order_list, addon2);
         }
         else if(addon1 == 6)
         {
             int addon2;
 
             cout << "\n- Kung Tod Kra Tiem (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 7)
         {
             int addon2;
 
             cout << "\n- Pra Muek Tod Kra Tiem (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
         else if(addon1 == 8)
         {
             int addon2;
 
             cout << "\n- Ruem Mit Tod Kra Tiem (45 Bath) -" << endl;
-            cout << "Press 1 Rad Khao" << endl;
-            cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-            cout << "Press 3 Kab Khao" << endl;
-            cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-            else if(addon2 == 3)
-            {
-                total += 45;
-            }
-            else if(addon2 == 4)
-            {
-                total += 50;
-            }
+            additional_menu1_3(order_list, addon2);
         }
     }
     else if(choice_restaurant_menu1 == 6)
@@ -1575,14 +771,7 @@ void restaurant_menu1() {
         int addon1;
 
         cout << "\n======== Khao Phat ========" << endl;
-        cout << "Press 1 Muu Sab - 40 Bath" << endl;
-        cout << "Press 2 Muu Chin - 40 Bath" << endl;
-        cout << "Press 3 Muu Krob - 40 Bath" << endl;
-        cout << "Press 4 Kai - 40 Bath" << endl;
-        cout << "Press 5 Nue - 40 Bath" << endl;
-        cout << "Press 6 Kung - 45 Bath" << endl;
-        cout << "Press 7 Pra Muek - 45 Bath" << endl;
-        cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+        additional_menu1_1();
         cout << "============================" << endl;
         cout << "\nPlease Addon >> ", cin >> addon1;
 
@@ -1779,6 +968,10 @@ void restaurant_menu1() {
         }
     }
 }
+
+
+
+
 
 void check_bill(vector<order_type>* order_list) {
     int choice, promotion_code;
