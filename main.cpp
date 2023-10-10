@@ -4,6 +4,7 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
@@ -1752,8 +1753,8 @@ void check_bill(vector<order_type>* order_list) {
     int choice, promotion_code;
 
     cout << "\n---- Check Bill ----" << endl;
-    string filename = generateUniqueFilename();
-    ofstream outputFile(filename);
+    // string filename = generateUniqueFilename();
+    // ofstream outputFile(filename);
 
     // if (outputFile.is_open()) {
     //     for (const order_type& item : *order_list) {
