@@ -1056,6 +1056,7 @@ void check_bill(vector<order_type>* order_list) {
                 cout << "\n>> Cooking. . . <<" << endl;
 
                 total = 0;
+                order_list->clear();
             }
         }
         else if(promotion_code == "dc25")
