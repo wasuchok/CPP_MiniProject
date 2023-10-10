@@ -12,6 +12,11 @@ struct order_type {
     string name;
     int price;
     int qty;
+
+    // เพิ่ม operator== เพื่อเปรียบเทียบแค่ name
+    bool operator==(const order_type& other) const {
+        return name == other.name;
+    }
 };
 
 void restaurant_menu1();
@@ -161,7 +166,7 @@ string generateUniqueFilename() {
     return uniqueFilename;
 }
 
-void additional_menu3_5(vector<order_type>* order_list,string name, int price) {
+void additional_menu3_5(vector<order_type>& order_list,string name, int price) {
     int qty;
     order_type order;
     order.name = name;
@@ -169,7 +174,17 @@ void additional_menu3_5(vector<order_type>* order_list,string name, int price) {
     cout << "QTY >> ", cin >> qty;
     total += price * qty;
     order.qty = qty;
-    order_list->push_back(order);
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+
+    
 }
 
 void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
@@ -182,11 +197,11 @@ void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        additional_menu3_5(order_list,name,price + 5);
+        additional_menu3_5(*order_list,name,price + 5);
     } else if(choice_additional_menu3 == 2) {
-        additional_menu3_5(order_list,name,price);
+        additional_menu3_5(*order_list,name,price);
     } else {
-        additional_menu3_5(order_list,name,price);
+        additional_menu3_5(*order_list,name,price);
         alert_message("If not selected, it will be set to Normal.");
     }
 }
@@ -267,15 +282,31 @@ void restaurant_menu3(vector<order_type>* order_list) {
     }
 }
 
-void drink_shop_menu4() {
+void drink_shop_menu4(vector<order_type> *order_list) {
     cout << "Press 1 Nam Plao 10 Bath" << endl;
     cout << "Press 2 Nam Pep Si 15 Bath" << endl;
     cout << "Press 3 Namsom 15 Bath" << endl;
     cout << "Press 4 Namkhaeng Plao 5 Bath" << endl;
     cout << "Press 0 backward" << endl;
+
+    int choice;
+    cout << "Enter >> ", cin >> choice;
+    if(choice == 1) {
+        total += 10;
+        additional_menu3_5(*order_list,"Nam Plao", 10);
+    } else if(choice == 2) {
+        total += 15;
+        additional_menu3_5(*order_list,"Nam Pep si", 15);
+    } else if(choice == 3) {
+        total += 15;
+        additional_menu3_5(*order_list,"Namsom", 15);
+    } else if(choice == 4) {
+        total += 5;
+        additional_menu3_5(*order_list,"Namkhaeng", 5);
+    }
 }
 
-void menu_list(vector<order_type>* order_list) {
+void menu_list(vector<order_type> *order_list) {
     while (true) {
     int choice_menu_list;
 
@@ -301,7 +332,7 @@ void menu_list(vector<order_type>* order_list) {
             } else if(restaurant_menu == 3) {
                 restaurant_menu3(order_list);
             } else if(restaurant_menu == 4) {
-                drink_shop_menu4();
+                drink_shop_menu4(order_list);
             }
         } else {
             alert_message("Please choose a restaurant first.");
@@ -1753,6 +1784,11 @@ void check_bill(vector<order_type>* order_list) {
     int choice, promotion_code;
 
     cout << "\n---- Check Bill ----" << endl;
+        for (const order_type& item : *order_list) {
+            cout << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
+        }
+        cout << endl;
+
     // string filename = generateUniqueFilename();
     // ofstream outputFile(filename);
 
