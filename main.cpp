@@ -169,20 +169,6 @@ void additional_menu3_5(vector<order_type>* order_list,string name, int price) {
     total += price * qty;
     order.qty = qty;
     order_list->push_back(order);
-
-    // string filename = generateUniqueFilename();
-    // ofstream outputFile(filename);
-
-    // if (outputFile.is_open()) {
-    //     for (const order_type& item : *order_list) {
-    //         outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
-    //     }
-
-    //     outputFile.close();
-    //     cout << "OK " << filename << endl;
-    // }
-
-    
 }
 
 void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
@@ -1769,23 +1755,23 @@ void check_bill(vector<order_type>* order_list) {
     string filename = generateUniqueFilename();
     ofstream outputFile(filename);
 
-    if (outputFile.is_open()) {
-        for (const order_type& item : *order_list) {
-            outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
-        }
+    // if (outputFile.is_open()) {
+    //     for (const order_type& item : *order_list) {
+    //         outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
+    //     }
 
-        outputFile.close();
-        cout << "Order list" << endl;
-        ifstream inputFile(filename);
-        if (inputFile.is_open()) {
-        string line;
-        while (getline(inputFile, line)) {
-            cout << line << endl;
-        }
+    //     outputFile.close();
+    //     cout << "Order list" << endl;
+    //     ifstream inputFile(filename);
+    //     if (inputFile.is_open()) {
+    //     string line;
+    //     while (getline(inputFile, line)) {
+    //         cout << line << endl;
+    //     }
 
-        inputFile.close(); 
-    }
-    }
+    //     inputFile.close(); 
+    // }
+    // }
 
     cout << "Total Price >> " << total << endl;
 
