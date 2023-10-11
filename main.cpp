@@ -569,6 +569,7 @@ void save_file_order(vector<order_type>* order_list) {
     string filename = generateUniqueFilename();
     ofstream outputFile(filename);
         if (outputFile.is_open()) {
+            outputFile << "============== Order_list ==============" << endl;
         for (const order_type& item : *order_list) {
             outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
         }
@@ -688,7 +689,7 @@ void total_price(vector<order_type>* order_list, int total_code)
     if(choice == 1)
     {
         cout << "\n>> Cooking. . . <<" << endl;
-
+        save_file_order(order_list);
         total = 0;
         order_list->clear();
     }
