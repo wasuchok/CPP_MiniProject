@@ -25,6 +25,8 @@ void additional_menu1_2(vector<order_type>* order_list, string name, int price);
 void additional_menu1_3(vector<order_type>* order_list, string name, string name2, int price);
 void additional_menu1_4(vector<order_type>& order_list, string name, string name2, string name3, int price);
 void check_bill(vector<order_type>* order_list);
+void total_price(vector<order_type>* order_list, int total_code);
+void save_file_order(vector<order_type>* order_list);
 
 bool check_status = false;
 int restaurant_menu, total = 0;
@@ -170,10 +172,10 @@ string generateUniqueFilename() {
     return uniqueFilename;
 }
 
-void additional_menu3_5(vector<order_type>& order_list,string name, int price) {
+void additional_menu3_5(vector<order_type>& order_list,string name, string name2, string name3, string name4, int price) {
     int qty;
     order_type order;
-    order.name = name;
+    order.name = name + " " + name2 + " " + name3 + " " + name4;
     order.price = price;
     cout << "QTY >> ", cin >> qty;
     total += price * qty;
@@ -191,7 +193,7 @@ void additional_menu3_5(vector<order_type>& order_list,string name, int price) {
     
 }
 
-void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
+void additional_menu3_4(vector<order_type>* order_list,string name, string name2, string name3, int price) {
     cout << "\n----- Special or Normal -----" << endl;
     cout << "\nPress 1 Special + 5 Bath" << endl;
     cout << "\nPress 2 Normal" << endl;
@@ -201,16 +203,16 @@ void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        additional_menu3_5(*order_list,name,price + 5);
+        additional_menu3_5(*order_list,name,name2,name3,"Pi set",price + 5);
     } else if(choice_additional_menu3 == 2) {
-        additional_menu3_5(*order_list,name,price);
+        additional_menu3_5(*order_list,name,name2,name3,"Thammada",price);
     } else {
-        additional_menu3_5(*order_list,name,price);
+        additional_menu3_5(*order_list,name,name2,name3,"Thammada",price);
         alert_message("If not selected, it will be set to Normal.");
     }
 }
 
-void additional_menu3_2(vector<order_type>* order_list,string name, int price) {
+void additional_menu3_2(vector<order_type>* order_list,string name, string name2, int price) {
     cout << "\n----- Choose meat -----" << endl;
     cout << "\nPress 1 Mu Chin " << price + 15 << " Bath" << endl;
     cout << "\nPress 2 Mu Sap " << price + 10 << " Bath" << endl;
@@ -222,13 +224,13 @@ void additional_menu3_2(vector<order_type>* order_list,string name, int price) {
     cout << "Enter >> ", cin >> choice_additional_menu3;
 
     if(choice_additional_menu3 == 1) {
-        additional_menu3_4(order_list,name,price + 15);
+        additional_menu3_4(order_list,name,name2,"Mu Chin",price + 15);
     } else if(choice_additional_menu3 == 2) {
-        additional_menu3_4(order_list,name,price + 10);
+        additional_menu3_4(order_list,name,name2,"Mu Sap",price + 10);
     } else if(choice_additional_menu3 == 3) {
-        additional_menu3_4(order_list,name,price + 15);
+        additional_menu3_4(order_list,name,name2,"Nong Kai",price + 15);
     } else if(choice_additional_menu3 == 4) {
-        additional_menu3_4(order_list,name,price + 10);
+        additional_menu3_4(order_list,name,name2,"Kai Chik",price + 10);
     }
 }
 
@@ -246,13 +248,13 @@ void additional_menu3_1(vector<order_type>* order_list,string name, int price) {
     cout << "Enter >> ", cin >> choice_additional_menu3;
     
     if(choice_additional_menu3 == 1) {
-        additional_menu3_2(order_list,name,price + 9);
+        additional_menu3_2(order_list,name,"Sen Lek",price + 9);
     } else if(choice_additional_menu3 == 2) {
-        additional_menu3_2(order_list,name,price + 7);
+        additional_menu3_2(order_list,name,"Sen Yai",price + 7);
     } else if(choice_additional_menu3 == 3) {
-        additional_menu3_2(order_list,name,price + 7);
+        additional_menu3_2(order_list,name,"Sen Ma Ma",price + 7);
     } else if(choice_additional_menu3 == 4) {
-        additional_menu3_2(order_list,name,price + 7);
+        additional_menu3_2(order_list,name,"Sen Mi",price + 7);
     } else if(choice_additional_menu3 == 0) {
         total -= 40;
     } else {
@@ -295,19 +297,15 @@ void drink_shop_menu4(vector<order_type> *order_list) {
 
     int choice;
     cout << "Enter >> ", cin >> choice;
-    if(choice == 1) {
-        total += 10;
-        additional_menu3_5(*order_list,"Nam Plao", 10);
-    } else if(choice == 2) {
-        total += 15;
-        additional_menu3_5(*order_list,"Nam Pep si", 15);
-    } else if(choice == 3) {
-        total += 15;
-        additional_menu3_5(*order_list,"Namsom", 15);
-    } else if(choice == 4) {
-        total += 5;
-        additional_menu3_5(*order_list,"Namkhaeng", 5);
-    }
+    // if(choice == 1) {
+    //     additional_menu3_5(*order_list,"Nam Plao", 10);
+    // } else if(choice == 2) {
+    //     additional_menu3_5(*order_list,"Nam Pep si", 15);
+    // } else if(choice == 3) {
+    //     additional_menu3_5(*order_list,"Namsom", 15);
+    // } else if(choice == 4) {
+    //     additional_menu3_5(*order_list,"Namkhaeng", 5);
+    // }
 }
 
 void menu_list(vector<order_type> *order_list) {
@@ -567,6 +565,30 @@ void restaurant_menu1(vector<order_type>* order_list) {
 }
 
 
+void save_file_order(vector<order_type>* order_list) {
+    string filename = generateUniqueFilename();
+    ofstream outputFile(filename);
+        if (outputFile.is_open()) {
+        for (const order_type& item : *order_list) {
+            outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
+        }
+        outputFile << endl;
+        outputFile << "Total Price : " << total << " Bath" << endl;
+
+        outputFile.close();
+    //     cout << "Order list" << endl;
+    //     ifstream inputFile(filename);
+    //     if (inputFile.is_open()) {
+    //     string line;
+    //     while (getline(inputFile, line)) {
+    //         cout << line << endl;
+    //     }
+
+    //     inputFile.close(); 
+    // }
+    }
+}
+
 
 
 
@@ -578,27 +600,6 @@ void check_bill(vector<order_type>* order_list) {
             cout << item.name << " : " << item.price << " Bath " << " - " << item.qty << " QTY" << endl;
         }
         cout << endl;
-
-    // string filename = generateUniqueFilename();
-    // ofstream outputFile(filename);
-
-    // if (outputFile.is_open()) {
-    //     for (const order_type& item : *order_list) {
-    //         outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
-    //     }
-
-    //     outputFile.close();
-    //     cout << "Order list" << endl;
-    //     ifstream inputFile(filename);
-    //     if (inputFile.is_open()) {
-    //     string line;
-    //     while (getline(inputFile, line)) {
-    //         cout << line << endl;
-    //     }
-
-    //     inputFile.close(); 
-    // }
-    // }
 
     cout << ">> Total Price : " << total << " <<" << endl;
 
@@ -614,20 +615,7 @@ void check_bill(vector<order_type>* order_list) {
         int choice2;
 
         cout << "\n- Confirm Order -" << endl;
-        cout << ">> Total Price : " << total << " <<" << endl;
-        cout << "KBANK - 0862105192" << endl;
-
-        cout << "\nPress 1 Payment Complete" << endl;
-        cout << "Press 0 Back" << endl;
-        cout << "Press >> ", cin >> choice2;
-
-        if(choice2 == 1)
-        {
-            cout << "\n>> Cooking. . . <<" << endl;
-
-            total = 0;
-            order_list->clear();
-        }
+        
     }
     else if(choice == 2)
     {
@@ -642,63 +630,24 @@ void check_bill(vector<order_type>* order_list) {
             discout = total * 10 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 10% <<" << endl;
-            cout << ">> Total Price : " << total << " <<" << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-                order_list->clear();
-            }
+            cout << "\n====== Discout 10% ======" << endl;
+            total_price(order_list, total_code);
         }
         else if(promotion_code == "dc25")
         {
             discout = total * 25 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 25% <<" << endl;
-            cout << ">> Total Price : " << total << " <<" << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-                order_list->clear();
-            }
+            cout << "\n====== Discout 25% ======" << endl;
+            total_price(order_list, total_code);
         }
         else if(promotion_code == "dc50")
         {
             discout = total * 50 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 50% <<" << endl;
-            cout << ">> Total Price : " << total << " <<" << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-                order_list->clear();
-            }
+            cout << "\n====== Discout 50% ======" << endl;
+            total_price(order_list, total_code);
         }
         else
         {
@@ -721,5 +670,25 @@ void check_bill(vector<order_type>* order_list) {
             total = 0;
             order_list->clear();
         }
+    }
+}
+
+void total_price(vector<order_type>* order_list, int total_code)
+{
+    int choice;
+
+    cout << ">> Total Price : " << total_code << " <<" << endl;
+    cout << "KBANK - 0862105192" << endl;
+
+    cout << "\nPress 1 Payment Complete" << endl;
+    cout << "Press 0 Back" << endl;
+    cout << "Press >> ", cin >> choice;
+
+    if(choice == 1)
+    {
+        cout << "\n>> Cooking. . . <<" << endl;
+
+        total = 0;
+        order_list->clear();
     }
 }
