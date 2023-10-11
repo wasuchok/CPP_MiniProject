@@ -615,6 +615,7 @@ void check_bill(vector<order_type>* order_list) {
         int choice2;
 
         cout << "\n- Confirm Order -" << endl;
+        total_price(order_list, total);
         
     }
     else if(choice == 2)
