@@ -5,7 +5,6 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
-
 using namespace std;
 
 struct order_type {
@@ -77,12 +76,16 @@ void restaurant_list() {
 void additional_menu2_1(vector<order_type>* order_list, string name, int price)
 {
     int addon;
+    cout << "\n===============================================" << endl;
+    cout << "Press 1 Khao Man Kai Tom - 40 Baht" << endl;
+    cout << "Press 2 Khao Man Kai Yang - 40 Baht" << endl;
+    cout << "Press 3 Khao Man Kai Thot - 40 Baht" << endl;
+    cout << "Press 4 Khao Man Kai Tom&Yang - 45 Baht" << endl;
+    cout << "Press 5 Khao Man Kai Tom&Thot - 45 Baht" << endl;
+    cout << "Press 6 Khao Man Kai Yang&Thot - 45 Baht" << endl;
+    cout << "Press 7 Khao Man Kai Tom&Yang&Thot - 50 Baht" << endl;
     cout << "===============================================" << endl;
-    cout << "Press 1 Khao Man Kai Tom  40 Bath" << endl;
-    cout << "Press 2 Khao Man Kai Yang 40 Bath" << endl;
-    cout << "Press 3 Khao Man Kai Thot 45 Bath" << endl;
-    cout << "===============================================" << endl;
-    cout << "Please select choice >> ", cin >> addon;
+    cout << "\nAddon >> ", cin >> addon;
     
 
     if(addon == 1)
@@ -95,18 +98,34 @@ void additional_menu2_1(vector<order_type>* order_list, string name, int price)
     }
     else if(addon == 3)
     {
-        additional_menu2_2(order_list, name, " Thot", 45);
+        additional_menu2_2(order_list, name, " Thot", 40);
+    }
+    else if(addon == 4)
+    {
+        additional_menu2_2(order_list, name, " Tom&Yang", 45);
+    }
+    else if(addon == 5)
+    {
+        additional_menu2_2(order_list, name, " Tom&Thot", 45);
+    }
+    else if(addon == 6)
+    {
+        additional_menu2_2(order_list, name, " Yang&Thot", 45);
+    }
+    else if(addon == 7)
+    {
+        additional_menu2_2(order_list, name, " Tom&Yang&Thot", 50);
     }
 }
 
 void additional_menu2_2(vector<order_type>* order_list, string name, string name2, int price)
 {
     int addon;
-    cout << "===============================================" << endl;
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
     cout << "Press 1 Tham Ma Da" << endl;
-    cout << "Press 2 Pi Set (+5 Bath)" << endl;
+    cout << "Press 2 Pi Set (+10 Baht)" << endl;
     cout << "======================================" << endl;
-    cout << "\nPlease Addon >> ", cin >> addon;
+    cout << "\nAddon >> ", cin >> addon;
 
     if(addon == 1)
     {
@@ -114,7 +133,7 @@ void additional_menu2_2(vector<order_type>* order_list, string name, string name
     }
     else if(addon == 2)
     {
-        additional_menu2_3(*order_list, name, name2, " Pi Set", price + 5);
+        additional_menu2_3(*order_list, name, name2, " Pi Set", price + 10);
     }
 }
 
@@ -124,7 +143,7 @@ void additional_menu2_3(vector<order_type>& order_list, string name, string name
     order_type order;
     order.name = name + name2 + name3;
     order.price = price;
-    cout << "QTY >> ", cin >> qty;
+    cout << "Quantity >> ", cin >> qty;
     total += price * qty;
     order.qty = qty;
 
@@ -139,34 +158,36 @@ void additional_menu2_3(vector<order_type>& order_list, string name, string name
 }
 
 void restaurant_menu2(vector<order_type>* order_list) {
-    int restaurant_menu2;
+    int menu;
     cout << "===============================================" << endl;
-    cout << "Press 1 Khaoman kai" << endl;
-    cout << "Press 2 Khao Muu Daeng 50 Bath" << endl;
-    cout << "Press 3 Khao Muu Krob 55 Bath" << endl;
-    cout << "Press 4 Khao Khluk Kra Pi 50 Bath" << endl;
-    cout << "Press 5 Khao Muu Daeng Muu Krob 55 Bath" << endl;
-    cout << "Press 0 backward" << endl;
+    cout << "Press 1 Khao Man Kai" << endl;
+    cout << "Press 2 Khao Muu Daeng - 50 Baht" << endl;
+    cout << "Press 3 Khao Muu Krob - 55 Baht" << endl;
+    cout << "Press 4 Khao Muu Daeng Muu Krob - 60 Baht" << endl;
+    cout << "Press 5 Khao Kluk Kra Pi - 50 Baht" << endl;
+    cout << "Press 0 Back" << endl;
     cout << "===============================================" << endl;
-    cout << "Please Select Menu >> ", cin >> restaurant_menu2;
+    cout << "\nPlease Select Menu >> ", cin >> menu;
 
-    int restaurant_menu2_choice;
-    int restaurant_menu2_praphet;
-
-    if(restaurant_menu2 == 1){
+    if(menu == 1)
+    {
         additional_menu2_1(order_list, "Khao Man Kai", 0);
     }
-    else if(restaurant_menu2 == 2){
-        additional_menu2_2(order_list, "Khao" ," Muu Daeng", 50);
+    else if(menu == 2)
+    {
+        additional_menu2_2(order_list, "Khao", " Muu Daeng", 50);
     }
-    else if(restaurant_menu2 == 3){
+    else if(menu == 3)
+    {
         additional_menu2_2(order_list, "Khao", " Muu Krob", 55);
     }
-    else if(restaurant_menu2 == 4){
-        additional_menu2_2(order_list, "Khao", " Khluk Kra Pi", 50);
+    else if(menu == 4)
+    {
+        additional_menu2_2(order_list, "Khao", " Muu Daeng Muu Krob", 60);
     }
-    else if(restaurant_menu2 == 5){
-        additional_menu2_2(order_list, "Khao", " Muu Daeng Muu Krob", 55);
+    else if(menu == 5)
+    {
+        additional_menu2_2(order_list, "Khao", " Khluk Kra Pi", 50);
     }
 
 }
@@ -192,7 +213,7 @@ void additional_menu3_5(vector<order_type>& order_list,string name, string name2
     order_type order;
     order.name = name + " " + name2 + " " + name3 + " " + name4;
     order.price = price;
-    cout << "QTY >> ", cin >> qty;
+    cout << "Quantity >> ", cin >> qty;
     total += price * qty;
     order.qty = qty;
 
@@ -210,7 +231,7 @@ void additional_menu3_5(vector<order_type>& order_list,string name, string name2
 
 void additional_menu3_4(vector<order_type>* order_list,string name, string name2, string name3, int price) {
     cout << "\n----- Special or Normal -----" << endl;
-    cout << "\nPress 1 Special + 5 Bath" << endl;
+    cout << "\nPress 1 Special + 5 Baht" << endl;
     cout << "\nPress 2 Normal" << endl;
     cout << "\n----*-------%----+-----------" << endl;
 
@@ -229,10 +250,10 @@ void additional_menu3_4(vector<order_type>* order_list,string name, string name2
 
 void additional_menu3_2(vector<order_type>* order_list,string name, string name2, int price) {
     cout << "\n----- Choose meat -----" << endl;
-    cout << "\nPress 1 Mu Chin " << price + 15 << " Bath" << endl;
-    cout << "\nPress 2 Mu Sap " << price + 10 << " Bath" << endl;
-    cout << "\nPress 3 Nong Kai " << price + 15 << " Bath" << endl;
-    cout << "\nPress 4 Kai Chik " << price + 10 << " Bath" << endl;
+    cout << "\nPress 1 Mu Chin " << price + 15 << " Baht" << endl;
+    cout << "\nPress 2 Mu Sap " << price + 10 << " Baht" << endl;
+    cout << "\nPress 3 Nong Kai " << price + 15 << " Baht" << endl;
+    cout << "\nPress 4 Kai Chik " << price + 10 << " Baht" << endl;
     cout << "\n-----*----------*-----" << endl;
 
     int choice_additional_menu3;
@@ -309,7 +330,7 @@ void additional_menu4_1(vector<order_type>& order_list, string name, int price)
     order_type order;
     order.name = name;
     order.price = price;
-    cout << "QTY >> ", cin >> qty;
+    cout << "Quantity >> ", cin >> qty;
     total += price * qty;
     order.qty = qty;
 
@@ -324,10 +345,10 @@ void additional_menu4_1(vector<order_type>& order_list, string name, int price)
 }
 
 void drink_shop_menu4(vector<order_type> *order_list) {
-    cout << "Press 1 Nam Plao 10 Bath" << endl;
-    cout << "Press 2 Nam Pep Si 15 Bath" << endl;
-    cout << "Press 3 Namsom 15 Bath" << endl;
-    cout << "Press 4 Namkhaeng Plao 5 Bath" << endl;
+    cout << "Press 1 Nam Plao 10 Baht" << endl;
+    cout << "Press 2 Nam Pep Si 15 Baht" << endl;
+    cout << "Press 3 Namsom 15 Baht" << endl;
+    cout << "Press 4 Namkhaeng Plao 5 Baht" << endl;
     cout << "Press 0 backward" << endl;
 
     int choice;
@@ -433,55 +454,47 @@ void additional_menu1_2(vector<order_type>* order_list, string name, int price)
 {
     int addon;
 
-    cout << "Press 1 Muu Sab - 40 Bath" << endl;
-    cout << "Press 2 Muu Chin - 40 Bath" << endl;
-    cout << "Press 3 Muu Krob - 40 Bath" << endl;
-    cout << "Press 4 Kai - 40 Bath" << endl;
-    cout << "Press 5 Nue - 40 Bath" << endl;
-    cout << "Press 6 Kung - 45 Bath" << endl;
-    cout << "Press 7 Pra Muek - 45 Bath" << endl;
-    cout << "Press 8 Ruem Mit - 45 Bath" << endl;
+    cout << "Press 1 Muu Sab - 40 Baht" << endl;
+    cout << "Press 2 Muu Chin - 40 Baht" << endl;
+    cout << "Press 3 Muu Krob - 40 Baht" << endl;
+    cout << "Press 4 Kai - 40 Baht" << endl;
+    cout << "Press 5 Nue - 40 Baht" << endl;
+    cout << "Press 6 Kung - 45 Baht" << endl;
+    cout << "Press 7 Pra Muek - 45 Baht" << endl;
+    cout << "Press 8 Ruem Mit - 45 Baht" << endl;
     cout << "==============================" << endl;
     cout << "\nPress >> ", cin >> addon;
 
     if(addon == 1)
     {
-        cout << "\n======== " << name << " Muu Sab ========" << endl;
         additional_menu1_3(order_list, name, " Muu Sab", 40);
     }
     else if(addon == 2)
     {
-        cout << "\n======== " << name << " Muu Chin ========" << endl;
         additional_menu1_3(order_list, name, " Muu Chin", 40);
     }
     else if(addon == 3)
     {
-        cout << "\n======== " << name << " Muu Krob ========" << endl;
         additional_menu1_3(order_list, name, " Muu Krob", 40);
     }
     else if(addon == 4)
     {
-        cout << "\n======== " << name << " Kai ========" << endl;
         additional_menu1_3(order_list, name, " Kai", 40);
     }
     else if(addon == 5)
     {
-        cout << "\n======== " << name << " Nue ========" << endl;
         additional_menu1_3(order_list, name, " Nue", 40);
     }
     else if(addon == 6)
     {
-        cout << "\n======== " << name << " Kung ========" << endl;
         additional_menu1_3(order_list, name, " Kung", 45);
     }
     else if(addon == 7)
     {
-        cout << "\n======== " << name << " Pra Muek ========" << endl;
         additional_menu1_3(order_list, name, " Pra Muek", 45);
     }
     else if(addon == 8)
     {
-        cout << "\n======== " << name << " Ruem Mit ========" << endl;
         additional_menu1_3(order_list, name, " Ruem Mit", 45);
     }
 }
@@ -490,11 +503,12 @@ void additional_menu1_3(vector<order_type>* order_list, string name, string name
 {
     int addon;
     
-    cout << "Press 1 Khai Daw (+10 Bath)" << endl;
-    cout << "Press 2 Khai Jeaw (+10 Bath)" << endl;
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Khai Daw (+10 Baht)" << endl;
+    cout << "Press 2 Khai Jeaw (+10 Baht)" << endl;
     cout << "Press 3 No Addon" << endl;
     cout << "======================================" << endl;
-    cout << "\nPlease Addon >> ", cin >> addon;
+    cout << "\nAddon >> ", cin >> addon;
 
     if(addon == 1)
     {
@@ -514,12 +528,13 @@ void additional_menu1_4(vector<order_type>* order_list, string name, string name
 {
     int addon;
     
+    cout << "\n======== " << name << name2 << name3 << " " << price << " Baht" << " ========" << endl;
     cout << "Press 1 Rad Khao" << endl;
-    cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
+    cout << "Press 2 Rad Khao Pi Set (+10 Baht)" << endl;
     cout << "Press 3 Kab Khao" << endl;
-    cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
+    cout << "Press 4 Kab Khao Pi Set (+10 Baht)" << endl;
     cout << "======================================" << endl;
-    cout << "\nPlease Addon >> ", cin >> addon;
+    cout << "\nAddon >> ", cin >> addon;
 
     if(addon == 1)
     {
@@ -527,7 +542,7 @@ void additional_menu1_4(vector<order_type>* order_list, string name, string name
     }
     else if(addon == 2)
     {
-        additional_menu1_5(*order_list, name, name2, name3, " Rad Khao Pi Set", price + 5);
+        additional_menu1_5(*order_list, name, name2, name3, " Rad Khao Pi Set", price + 10);
     }
     else if(addon == 3)
     {
@@ -535,7 +550,7 @@ void additional_menu1_4(vector<order_type>* order_list, string name, string name
     }
     else if(addon == 4)
     {
-        additional_menu1_5(*order_list, name, name2, name3, " Kab Khao Pi Set", price + 5);
+        additional_menu1_5(*order_list, name, name2, name3, " Kab Khao Pi Set", price + 10);
     }
 }
 
@@ -545,7 +560,7 @@ void additional_menu1_5(vector<order_type>& order_list, string name, string name
     order_type order;
     order.name = name + name2 + name3 + name4;
     order.price = price;
-    cout << "QTY >> ", cin >> qty;
+    cout << "Quantity >> ", cin >> qty;
     total += price * qty;
     order.qty = qty;
 
@@ -582,10 +597,10 @@ void save_file_order(vector<order_type>* order_list, int total_ok) {
         if (outputFile.is_open()) {
             outputFile << "- Order Lists -" << endl;
         for (const order_type& item : *order_list) {
-            outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
+            outputFile << item.name << ": " << item.price << " Baht" << " - " << item.qty << " QTY" << endl;
         }
         outputFile << endl;
-        outputFile << "Total Price : " << total_ok << " Bath" << endl;
+        outputFile << "Total Price : " << total_ok << " Baht" << endl;
 
         outputFile.close();
     //     cout << "Order list" << endl;
@@ -603,11 +618,24 @@ void save_file_order(vector<order_type>* order_list, int total_ok) {
 
 
 void check_bill(vector<order_type>* order_list) {
-    int choice, promotion_code;
+    int choice, promotion_code, item_total;
 
+    // cout << "=" << setw(60) << setfill('=') << " Check Bill " << setw(50) << setfill('=') << "=" << endl;
+    //     for (const order_type& item : *order_list) {
+    //         item_total = item.price * item.qty;
+
+    //         cout << setfill(' ') << setw(25) << "Menu" << setw(37) << setfill(' ') << "Price" << setw(22) << setfill(' ') << "Quantity" << setw(17) << setfill(' ') << "Total" << endl;
+    //         cout << item.name << setw(20) << setfill(' ') << item.price << setw(20) << setfill(' ') << item.qty << setw(20) << setfill(' ') << item_total << endl;
+    //         // cout << item.name << " : " << item.price << " Baht" << item.qty << " QTY " << item_total << endl;
+    //     }
+    //     cout << endl;
+        
+    //     cout << ">> Total Price : " << total << " <<" << endl;
+    
     cout << "\n==================== Check Bill ====================" << endl;
         for (const order_type& item : *order_list) {
-            cout << item.name << " : " << item.price << " Bath " << " - " << item.qty << " QTY" << endl;
+            item_total = item.price * item.qty;
+            cout << item.name << " : " << item.price << " Baht" << item.qty << " QTY " << item_total << endl;
         }
         cout << endl;
 
