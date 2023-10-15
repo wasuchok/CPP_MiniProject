@@ -50,13 +50,13 @@ void alert_message(string msg) {
 
 void restaurant_list() {
     int choice_restaurant_list;
-    cout << "\n================= Restaurant =================" << endl;
-    cout << "Press 1 Arr Han Tam Sang Tee Noi" << endl;
+    cout << "\n========= Restaurant ==========" << endl;
+    cout << "Press 1 Arr Han Tam Sang" << endl;
     cout << "Press 2 Khao Man Kai" << endl;
     cout << "Press 3 Gueytiew" << endl;
     cout << "Press 4 Drink Shop" << endl;
     cout << "Press 0 Back" << endl;
-    cout << "===============================================" << endl;
+    cout << "===============================" << endl;
 
     cout << "\nSelect Restaurant >> ", cin >> choice_restaurant_list;
 
@@ -577,7 +577,7 @@ void additional_menu1_5(vector<order_type>& order_list, string name, string name
 void restaurant_menu1(vector<order_type>* order_list) {
     int menu;
 
-    cout << "\n===== Arr Han Tam Sang Tee Noi =====" << endl;
+    cout << "\n===== Arr Han Tam Sang ===========" << endl;
     cout << "Press 1 Phat Kra Phrao" << endl;
     cout << "Press 2 Phat Ka Na" << endl;
     cout << "Press 3 Phat Prik Kaeng" << endl;
@@ -591,13 +591,19 @@ void restaurant_menu1(vector<order_type>* order_list) {
 }
 
 
-void save_file_order(vector<order_type>* order_list, int total_ok) {
+void save_file_order(vector<order_type>* order_list, int total_ok)
+{
     string filename = generateUniqueFilename();
     ofstream outputFile(filename);
-        if (outputFile.is_open()) {
-            outputFile << "- Order Lists -" << endl;
-        for (const order_type& item : *order_list) {
-            outputFile << item.name << ": " << item.price << " Baht" << " - " << item.qty << " QTY" << endl;
+    if (outputFile.is_open())
+    {
+        outputFile << "- Order Lists -" << endl;
+        for (const order_type& item : *order_list)
+        {
+            int item_total = item.price * item.qty;
+            cout << item.name << " : " << item.price << " Baht" << endl;
+            cout << "Quantity : " << item.qty << endl;
+            cout << "Total : " << item_total << endl << endl;
         }
         outputFile << endl;
         outputFile << "Total Price : " << total_ok << " Baht" << endl;
@@ -620,26 +626,15 @@ void save_file_order(vector<order_type>* order_list, int total_ok) {
 void check_bill(vector<order_type>* order_list) {
     int choice, promotion_code, item_total;
 
-    // cout << "=" << setw(60) << setfill('=') << " Check Bill " << setw(50) << setfill('=') << "=" << endl;
-    //     for (const order_type& item : *order_list) {
-    //         item_total = item.price * item.qty;
-
-    //         cout << setfill(' ') << setw(25) << "Menu" << setw(37) << setfill(' ') << "Price" << setw(22) << setfill(' ') << "Quantity" << setw(17) << setfill(' ') << "Total" << endl;
-    //         cout << item.name << setw(20) << setfill(' ') << item.price << setw(20) << setfill(' ') << item.qty << setw(20) << setfill(' ') << item_total << endl;
-    //         // cout << item.name << " : " << item.price << " Baht" << item.qty << " QTY " << item_total << endl;
-    //     }
-    //     cout << endl;
-        
-    //     cout << ">> Total Price : " << total << " <<" << endl;
-    
     cout << "\n==================== Check Bill ====================" << endl;
-        for (const order_type& item : *order_list) {
-            item_total = item.price * item.qty;
-            cout << item.name << " : " << item.price << " Baht" << item.qty << " QTY " << item_total << endl;
-        }
-        cout << endl;
-
-    cout << ">> Total Price : " << total << " <<" << endl;
+    for (const order_type& item : *order_list)
+    {
+        item_total = item.price * item.qty;
+        cout << item.name << " : " << item.price << " Baht" << endl;
+        cout << "Quantity : " << item.qty << endl;
+        cout << "Total : " << item_total << endl << endl;
+    }
+    cout << ">> Total Price : " << total << " Baht <<" << endl;
 
     cout << "\nPress 1 Pay" << endl;
     cout << "Press 2 Promotion Code" << endl;
