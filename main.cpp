@@ -479,7 +479,7 @@ void restaurant_menu3(vector<order_type>* order_list) {
         additional_menu3_1(order_list, "Guay Tiew Tom Yam", 40);
     } else if(menu == 4) {
         additional_menu3_1(order_list, "Guay Tiew Yentafo", 40);
-    } else if(menu == 4) {
+    } else if(menu == 5) {
         additional_menu3_1(order_list, "Guay Tiew Haeng", 30);
     }
 }
@@ -504,7 +504,7 @@ void additional_menu3_1(vector<order_type>* order_list,string name, int price) {
         additional_menu3_2(order_list,name,"Sen Yai", price + 5);
     } else if(addon == 3) {
         additional_menu3_2(order_list,name,"Sen Mi", price + 5);
-    } else if(addon == 3) {
+    } else if(addon == 4) {
         additional_menu3_2(order_list,name,"Sen Ba Mi", price + 7);
     } else if(addon == 5) {
         additional_menu3_2(order_list,name,"Sen Ma Ma", price + 7);
