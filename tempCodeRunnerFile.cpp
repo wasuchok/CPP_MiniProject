@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -6,7 +5,6 @@
 #include <ctime>
 #include <cstdlib>
 #include <algorithm>
-
 using namespace std;
 
 struct order_type {
@@ -20,12 +18,52 @@ struct order_type {
     }
 };
 
+// ร้าน 1
 void restaurant_menu1(vector<order_type>* order_list);
-void additional_menu1_1();
-void additional_menu1_2(vector<order_type>* order_list, int addon2);
-void additional_menu1_3(vector<order_type>* order_list, int addon2);
-void additional_menu1_4(vector<order_type>& order_list,string name, int price);
+void additional_menu1_1(vector<order_type>* order_list, int menu1);
+void additional_menu1_2(vector<order_type>* order_list, string name, int price);
+void additional_menu1_3(vector<order_type>* order_list, string name, string name2, int price);
+void additional_menu1_4(vector<order_type>* order_list, string name, string name2, string name3, int price);
+void additional_menu1_5(vector<order_type>& order_list, string name, string name2, string name3, string name4, int price);
+// จบ
+
+// ร้าน 2
+void restaurant_menu2(vector<order_type>* order_list);
+void additional_menu2_1(vector<order_type>* order_list, string name, int price);
+void additional_menu2_2(vector<order_type>* order_list, string name, string name2, int price);
+void additional_menu2_3(vector<order_type>& order_list, string name, string name2, string name3, int price);
+// จบ
+
+// ร้าน 3
+void restaurant_menu3(vector<order_type>* order_list);
+void additional_menu3_1(vector<order_type>* order_list,string name, int price);
+void additional_menu3_2(vector<order_type>* order_list,string name, string name2, int price);
+void additional_menu3_3(vector<order_type>* order_list,string name, string name2, string name3, int price);
+void additional_menu3_4(vector<order_type>& order_list,string name, string name2, string name3, string name4, int price);
+
+// ร้าน 4
+void restaurant_menu4(vector<order_type>* order_list);
+void additional_menu4_1(vector<order_type>* order_list, int menu1);
+void additional_menu4_2(vector<order_type>* order_list, string name, int price);
+void additional_menu4_3(vector<order_type>* order_list, string name, string name2, int price);
+void additional_menu4_4(vector<order_type>& order_list, string name, string name2, string name3, int price);
+
+// ร้าน 5
+void restaurant_menu5(vector<order_type>* order_list);
+void additional_menu5_1(vector<order_type>* order_list, int menu1);
+void additional_menu5_2(vector<order_type>* order_list, string name, int price);
+void additional_menu5_3(vector<order_type>* order_list, string name, string name2, int price);
+void additional_menu5_4(vector<order_type>& order_list, string name, string name2, string name3, int price);
+
+// ร้าน 6
+void drink_shop_menu6(vector<order_type> *order_list);
+void additional_menu6_1(vector<order_type>& order_list, string name, int price);
+
+
 void check_bill(vector<order_type>* order_list);
+void total_price(vector<order_type>* order_list, int total_code);
+void save_file_order(vector<order_type>* order_list);
+
 
 bool check_status = false;
 int restaurant_menu, total = 0;
@@ -38,13 +76,15 @@ void alert_message(string msg) {
 
 void restaurant_list() {
     int choice_restaurant_list;
-    cout << "\n================= Restaurant =================" << endl;
-    cout << "Press 1 Arr Han Tam Sang Tee Noi" << endl;
+    cout << "\n=========== Restaurant ============" << endl;
+    cout << "Press 1 Arr Han Tam Sang" << endl;
     cout << "Press 2 Khao Man Kai" << endl;
-    cout << "Press 3 Gueytiew" << endl;
-    cout << "Press 4 Drink Shop" << endl;
-    cout << "Press 0 Back" << endl;
-    cout << "===============================================" << endl;
+    cout << "Press 3 Guey Tiew" << endl;
+    cout << "Press 4 Rad Na & Phat Si Ew" << endl;
+    cout << "Press 5 Suki" << endl;
+    cout << "Press 6 Drink Shop" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "===================================" << endl;
 
     cout << "\nSelect Restaurant >> ", cin >> choice_restaurant_list;
 
@@ -56,103 +96,751 @@ void restaurant_list() {
     restaurant_menu = 3
     : choice_restaurant_list == 4 ?
     restaurant_menu = 4
+    : choice_restaurant_list == 5 ?
+    restaurant_menu = 5
+    : choice_restaurant_list == 6 ?
+    restaurant_menu = 6
     : check_status = false;
 
     check_status = true;
 }
 
-void restaurant_menu2() {
+void menu_list(vector<order_type> *order_list) {
+    while (true) {
+    int choice_menu_list;
 
-    cout << "Press 1 Khaoman kai" << endl;
-    cout << "Press 2 Khao Mudaeng 50 Bath" << endl;
-    cout << "Press 3 Khao MuKrop 55 Bath" << endl;
-    cout << "Press 4 Khao Khluk Kra Pi 50 Bath" << endl;
-    cout << "Press 5 Khao MudaengMuKrop 55 Bath" << endl;
-    cout << "Press 0 backward" << endl;
+    cout << "\n===========================" << endl;
+    cout << "Press 1 Restaurant " << endl;
+    cout << "Press 2 Food " << endl;
+    cout << "Press 3 Check Bill " << endl;
+    cout << "Press 0 Close Program  " << endl;
+    cout << "===========================" << endl;
 
-    int restaurant_menu2;
-   
-    cout << "Please select food >> ", cin >> restaurant_menu2;
+    cout << "\nSelect Menu >> ", cin >> choice_menu_list;
 
-    int restaurant_menu2_choice;
-    int restaurant_menu2_praphet;
-
-    if(restaurant_menu2 == 1){
-            cout << "Press 1 Khaoman Kai Tom  40 Bath" << endl;
-            cout << "Press 2 Khaoman Kai Yang 40 Bath" << endl;
-            cout << "Press 3 Khaoman Kai Thot 45 Bath" << endl;
-            cout << "Please select choice >> ", cin >> restaurant_menu2_choice;
-
-           
-
-                if(restaurant_menu2_choice == 1 || restaurant_menu2_choice == 2){
-                cout << "Press 1 Thammada" << endl;
-                cout << "Press 2 Phiset" << endl;
-                cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                        if(restaurant_menu2_praphet == 1){
-                            total += 40;
-                        }else if(restaurant_menu2_praphet == 2){
-                            total += 40 + 10;
-                        }
-                }
-
-                            else if(restaurant_menu2_choice == 3){
-                                cout << "Press 1 Thammada" << endl;
-                                cout << "Press 2 Phiset" << endl;
-                                cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                                if(restaurant_menu2_praphet == 1){
-                                    total += 45;
-                                }else if(restaurant_menu2_praphet == 2){
-                                    total += 45 + 10;
-                                }
-                            }
-
-
-        }else if(restaurant_menu2 == 2){
-            cout << "Press 1 Thammada" << endl;
-            cout << "Press 2 Phiset" << endl;
-            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                if(restaurant_menu2_praphet == 1){
-                    total += 50;
-                }else if(restaurant_menu2_praphet == 2){
-                    total += 50 + 10;
-                }
-
-        }else if(restaurant_menu2 == 3){
-            cout << "Press 1 Thammada" << endl;
-            cout << "Press 2 Phiset" << endl;
-            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                if(restaurant_menu2_praphet == 1){
-                    total += 55;
-                }else if(restaurant_menu2_praphet == 2){
-                    total += 55 + 10;
-                }
-        }else if(restaurant_menu2 == 4){
-            cout << "Press 1 Thammada" << endl;
-            cout << "Press 2 Phiset" << endl;
-            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                if(restaurant_menu2_praphet == 1){
-                    total += 50;
-                }else if(restaurant_menu2_praphet == 2){
-                    total += 50 + 10;
-                }
-        }else if(restaurant_menu2 == 5){
-            cout << "Press 1 Thammada" << endl;
-            cout << "Press 2 Phiset" << endl;
-            cout << "Please select choice >> ", cin >> restaurant_menu2_praphet;
-
-                if(restaurant_menu2_praphet == 1){
-                    total += 55;
-                }else if(restaurant_menu2_praphet == 2){
-                    total += 55 + 10;
-                }
+    if(choice_menu_list == 0) {
+        break;
+    } else if(choice_menu_list == 1) {
+        restaurant_list();
+    } else if(choice_menu_list == 2) {
+        if(check_status) {
+            if(restaurant_menu == 1) {
+                restaurant_menu1(order_list);
+            } else if(restaurant_menu == 2) {
+                restaurant_menu2(order_list);
+            } else if(restaurant_menu == 3) {
+                restaurant_menu3(order_list);
+            } else if(restaurant_menu == 4) {
+                restaurant_menu4(order_list);
+            } else if(restaurant_menu == 5) {
+                restaurant_menu5(order_list);
+            } else if(restaurant_menu == 6) {
+                drink_shop_menu6(order_list);
+            }
+        } else {
+            alert_message("Please choose a restaurant first.");
         }
+     } else if(choice_menu_list == 3) {
+        check_bill(order_list);
+     }
+    }
+}
 
+int main() {
+    vector<order_type> order_list;
+    menu_list(&order_list);
+}
+
+void restaurant_menu1(vector<order_type>* order_list) {
+    int menu;
+
+    cout << "\n======== Arr Han Tam Sang ========" << endl;
+    cout << "Press 1 Phat Kra Phrao" << endl;
+    cout << "Press 2 Phat Ka Na" << endl;
+    cout << "Press 3 Phat Prik Kaeng" << endl;
+    cout << "Press 4 Phat Phong Kra Ri" << endl;
+    cout << "Press 5 Tod Kra Tiem" << endl;
+    cout << "Press 6 Khao Pad" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "==================================" << endl;
+
+    additional_menu1_1(order_list, menu);
+}
+
+void additional_menu1_1(vector<order_type>* order_list, int menu1)
+{
+    cout << "\nSelect Menu >> ", cin >> menu1;
+
+    if(menu1 == 1)
+    {
+        cout << "\n======== Phat Kra Phrao ========" << endl;
+        additional_menu1_2(order_list, "Phat Kra Phrao", 0);
+        cout << "================================" << endl;
+    }
+    else if(menu1 == 2)
+    {
+        cout << "\n======== Phat Ka Na ========" << endl;
+        additional_menu1_2(order_list, "Phat Ka Na", 0);
+        cout << "============================" << endl;
+    }
+    else if(menu1 == 3)
+    {
+        cout << "\n======== Phat Prik Kaeng ========" << endl;
+        additional_menu1_2(order_list, "Phat Prik Kaeng", 0);
+        cout << "=================================" << endl;
+    }
+    else if(menu1 == 4)
+    {
+        cout << "\n======== Phat Phong Kra Ri ========" << endl;
+        additional_menu1_2(order_list, "Phat Phong Kra Ri", 0);
+        cout << "===================================" << endl;
+    }
+    else if(menu1 == 5)
+    {
+        cout << "\n======== Tod Kra Tiem ========" << endl;
+        additional_menu1_2(order_list, "Tod Kra Tiem", 0);
+        cout << "==============================" << endl;
+    }
+    else if(menu1 == 6)
+    {
+        cout << "\n======== Khao Phat ========" << endl;
+        additional_menu1_2(order_list, "Khao Phat", 0);
+        cout << "===========================" << endl;
+    }
+}
+
+void additional_menu1_2(vector<order_type>* order_list, string name, int price)
+{
+    int addon;
+
+    cout << "Press 1 Muu Sab - 40 Baht" << endl;
+    cout << "Press 2 Muu Chin - 40 Baht" << endl;
+    cout << "Press 3 Muu Krob - 40 Baht" << endl;
+    cout << "Press 4 Kai - 40 Baht" << endl;
+    cout << "Press 5 Nue - 40 Baht" << endl;
+    cout << "Press 6 Kung - 45 Baht" << endl;
+    cout << "Press 7 Pra Muek - 45 Baht" << endl;
+    cout << "Press 8 Ruem Mit - 45 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "===================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu1_3(order_list, name, " Muu Sab", 40);
+    }
+    else if(addon == 2)
+    {
+        additional_menu1_3(order_list, name, " Muu Chin", 40);
+    }
+    else if(addon == 3)
+    {
+        additional_menu1_3(order_list, name, " Muu Krob", 40);
+    }
+    else if(addon == 4)
+    {
+        additional_menu1_3(order_list, name, " Kai", 40);
+    }
+    else if(addon == 5)
+    {
+        additional_menu1_3(order_list, name, " Nue", 40);
+    }
+    else if(addon == 6)
+    {
+        additional_menu1_3(order_list, name, " Kung", 45);
+    }
+    else if(addon == 7)
+    {
+        additional_menu1_3(order_list, name, " Pra Muek", 45);
+    }
+    else if(addon == 8)
+    {
+        additional_menu1_3(order_list, name, " Ruem Mit", 45);
+    }
+}
+
+void additional_menu1_3(vector<order_type>* order_list, string name, string name2, int price)
+{
+    int addon;
+    
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Khai Daw (+10 Baht)" << endl;
+    cout << "Press 2 Khai Jeaw (+10 Baht)" << endl;
+    cout << "Press 3 No Addon" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "======================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu1_4(order_list, name, name2, " Khai Daw", price + 10);
+    }
+    else if(addon == 2)
+    {
+        additional_menu1_4(order_list, name, name2, " Khai Jeaw", price + 10);
+    }
+    else if(addon == 3)
+    {
+        additional_menu1_4(order_list, name, name2, "", price + 0);
+    }
+}
+
+void additional_menu1_4(vector<order_type>* order_list, string name, string name2, string name3, int price)
+{
+    int addon;
+    
+    cout << "\n======== " << name << name2 << name3 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Rad Khao" << endl;
+    cout << "Press 2 Rad Khao Pi Set (+10 Baht)" << endl;
+    cout << "Press 3 Kab Khao" << endl;
+    cout << "Press 4 Kab Khao Pi Set (+10 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "======================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu1_5(*order_list, name, name2, name3, " Rad Khao", price + 0);
+    }
+    else if(addon == 2)
+    {
+        additional_menu1_5(*order_list, name, name2, name3, " Rad Khao Pi Set", price + 10);
+    }
+    else if(addon == 3)
+    {
+        additional_menu1_5(*order_list, name, name2, name3, " Kab Khao", price + 0);
+    }
+    else if(addon == 4)
+    {
+        additional_menu1_5(*order_list, name, name2, name3, " Kab Khao Pi Set", price + 10);
+    }
+}
+
+void additional_menu1_5(vector<order_type>& order_list, string name, string name2, string name3, string name4, int price)
+{
+    int qty;
+    order_type order;
+    order.name = name + name2 + name3 + name4;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void additional_menu2_3(vector<order_type>& order_list, string name, string name2, string name3, int price)
+{
+    int qty;
+    order_type order;
+    order.name = name + name2 + name3;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void restaurant_menu2(vector<order_type>* order_list) {
+    int menu;
+    cout << "================== Khao Man Kai ==================" << endl;
+    cout << "Press 1 Khao Man Kai" << endl;
+    cout << "Press 2 Khao Muu Daeng - 50 Baht" << endl;
+    cout << "Press 3 Khao Muu Krob - 55 Baht" << endl;
+    cout << "Press 4 Khao Muu Daeng Muu Krob - 60 Baht" << endl;
+    cout << "Press 5 Khao Kluk Kra Pi - 50 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "================================================" << endl;
+    cout << "\nSelect Menu >> ", cin >> menu;
+
+    if(menu == 1)
+    {
+        additional_menu2_1(order_list, "Khao Man Kai", 0);
+    }
+    else if(menu == 2)
+    {
+        additional_menu2_2(order_list, "Khao", " Muu Daeng", 50);
+    }
+    else if(menu == 3)
+    {
+        additional_menu2_2(order_list, "Khao", " Muu Krob", 55);
+    }
+    else if(menu == 4)
+    {
+        additional_menu2_2(order_list, "Khao", " Muu Daeng Muu Krob", 60);
+    }
+    else if(menu == 5)
+    {
+        additional_menu2_2(order_list, "Khao", " Khluk Kra Pi", 50);
+    }
+
+}
+
+void additional_menu2_1(vector<order_type>* order_list, string name, int price)
+{
+    int addon;
+    cout << "\n==================== " << name << " ====================" << endl;
+    cout << "Press 1 Khao Man Kai Tom - 40 Baht" << endl;
+    cout << "Press 2 Khao Man Kai Yang - 40 Baht" << endl;
+    cout << "Press 3 Khao Man Kai Thot - 40 Baht" << endl;
+    cout << "Press 4 Khao Man Kai Tom&Yang - 45 Baht" << endl;
+    cout << "Press 5 Khao Man Kai Tom&Thot - 45 Baht" << endl;
+    cout << "Press 6 Khao Man Kai Yang&Thot - 45 Baht" << endl;
+    cout << "Press 7 Khao Man Kai Tom&Yang&Thot - 50 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "===============================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+    
+
+    if(addon == 1)
+    {
+        additional_menu2_2(order_list, name, " Tom", 40);
+    }
+    else if(addon == 2)
+    {
+        additional_menu2_2(order_list, name, " Yang", 40);
+    }
+    else if(addon == 3)
+    {
+        additional_menu2_2(order_list, name, " Thot", 40);
+    }
+    else if(addon == 4)
+    {
+        additional_menu2_2(order_list, name, " Tom&Yang", 45);
+    }
+    else if(addon == 5)
+    {
+        additional_menu2_2(order_list, name, " Tom&Thot", 45);
+    }
+    else if(addon == 6)
+    {
+        additional_menu2_2(order_list, name, " Yang&Thot", 45);
+    }
+    else if(addon == 7)
+    {
+        additional_menu2_2(order_list, name, " Tom&Yang&Thot", 50);
+    }
+}
+
+void additional_menu2_2(vector<order_type>* order_list, string name, string name2, int price)
+{
+    int addon;
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Tham Ma Da" << endl;
+    cout << "Press 2 Pi Set (+10 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "======================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu2_3(*order_list, name, name2, "", price + 0);
+    }
+    else if(addon == 2)
+    {
+        additional_menu2_3(*order_list, name, name2, " Pi Set", price + 10);
+    }
+}
+
+void restaurant_menu3(vector<order_type>* order_list) {
+    cout << "\n========== Guay Tiew ==========" << endl;
+    cout << "Press 1 Guay Tiew Nam Sai - 30 Baht" << endl;
+    cout << "Press 2 Guay Tiew Nam Tok - 35 Baht" << endl;
+    cout << "Press 3 Guay Tiew Tom Yam - 40 Baht" << endl;
+    cout << "Press 4 Guay Tiew Yentafo - 40 Baht" << endl;
+    cout << "Press 5 Guay Tiew Haeng - 30 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "===============================" << endl;
+
+    int menu;
+
+    cout << "\nSelect Menu >> ", cin >> menu;
+
+    if(menu == 1) {
+        additional_menu3_1(order_list, "Guay Tiew Nam Sai", 30);
+    } else if(menu == 2) {
+        additional_menu3_1(order_list, "Guay Tiew Nam Tok", 35);
+    } else if(menu == 3) {
+        additional_menu3_1(order_list, "Guay Tiew Tom Yam", 40);
+    } else if(menu == 4) {
+        additional_menu3_1(order_list, "Guay Tiew Yentafo", 40);
+    } else if(menu == 5) {
+        additional_menu3_1(order_list, "Guay Tiew Haeng", 30);
+    }
+}
+
+void additional_menu3_1(vector<order_type>* order_list,string name, int price) {
+    
+    cout << "\n============= " << name << " " << price << " Baht" << " ===============" << endl;
+    cout << "Press 1 Sen Lek (+5 Baht)" <<  endl;
+    cout << "Press 2 Sen Yai (+5 Baht)" << endl;
+    cout << "Press 3 Sen Mi (+5 Baht)" << endl;
+    cout << "Press 4 Sen Ba Mi (+7 Baht)" << endl;
+    cout << "Press 5 Sen Ma Ma (+7 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "============================================" << endl;
+
+    int addon;
+    cout << "\nSelect Menu >> ", cin >> addon;
+    
+    if(addon == 1) {
+        additional_menu3_2(order_list,name,"Sen Lek", price + 5);
+    } else if(addon == 2) {
+        additional_menu3_2(order_list,name,"Sen Yai", price + 5);
+    } else if(addon == 3) {
+        additional_menu3_2(order_list,name,"Sen Mi", price + 5);
+    } else if(addon == 4) {
+        additional_menu3_2(order_list,name,"Sen Ba Mi", price + 7);
+    } else if(addon == 5) {
+        additional_menu3_2(order_list,name,"Sen Ma Ma", price + 7);
+    } else if(addon == 0) {
+        total -= 40;
+    } else {
+        cout << "Invaild Choice" << endl;
+        total -= 40;
+    }
+}
+
+void additional_menu3_2(vector<order_type>* order_list,string name, string name2, int price) {
+    cout << "\n================= " << name << " " << name2 << " " << price << " Baht" << " ===================" << endl;
+    cout << "Press 1 Muu Chin (+10 Baht)" << endl;
+    cout << "Press 2 Muu Sab (+10 Baht)" << endl;
+    cout << "Press 3 Nong Kai (+15 Baht)" << endl;
+    cout << "Press 4 Kai Chek (+10 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "============================================================" << endl;
+
+    int addon;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1) {
+        additional_menu3_3(order_list,name,name2, "Muu Chin", price + 10);
+    } else if(addon == 2) {
+        additional_menu3_3(order_list,name,name2, "Muu Sab", price + 10);
+    } else if(addon == 3) {
+        additional_menu3_3(order_list,name,name2, "Nong Kai", price + 15);
+    } else if(addon == 4) {
+        additional_menu3_3(order_list,name,name2, "Kai Chek", price + 10);
+    }
+}
+
+void additional_menu3_3(vector<order_type>* order_list,string name, string name2, string name3, int price) {
+    cout << "\n\n========== " << name << " " << name2 << " " << name3 << " " << price << " Baht" << " ============" << endl;
+    cout << "Press 1 Tham Ma Da" << endl;
+    cout << "Press 2 Pi set (+5 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "=========================================" << endl;
+
+    int addon;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1) {
+        additional_menu3_4(*order_list, name, name2, name3, "", price + 5);
+    } else if(addon == 2) {
+        additional_menu3_4(*order_list, name, name2, name3, "Pi set", price);
+    } else {
+        additional_menu3_4(*order_list, name, name2, name3, "", price);
+        alert_message("If not selected, it will be set to Tham Ma Da.");
+    }
+}
+
+void additional_menu3_4(vector<order_type>& order_list,string name, string name2, string name3, string name4, int price) {
+    int qty;
+    order_type order;
+    order.name = name + " " + name2 + " " + name3 + " " + name4;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void restaurant_menu4(vector<order_type>* order_list) {
+    int menu;
+
+    cout << "\n======== Rad Na & Phat Si Ew ========" << endl;
+    cout << "Press 1 Rad Na" << endl;
+    cout << "Press 2 Phat Si Ew" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "=====================================" << endl;
+
+    additional_menu4_1(order_list, menu);
+}
+
+void additional_menu4_1(vector<order_type>* order_list, int menu1)
+{
+    cout << "\nSelect Menu >> ", cin >> menu1;
+
+    if(menu1 == 1)
+    {
+        cout << "\n======== Rad Na ========" << endl;
+        additional_menu4_2(order_list, "Rad Na", 0);
+        cout << "================================" << endl;
+    }
+    else if(menu1 == 2)
+    {
+        cout << "\n======== Phat Si Ew ========" << endl;
+        additional_menu4_2(order_list, "Phat Si Ew", 0);
+        cout << "============================" << endl;
+    }
+}
+
+void additional_menu4_2(vector<order_type>* order_list, string name, int price)
+{
+    int addon;
+
+    cout << "Press 1 Sen Lek - 45 Baht" << endl;
+    cout << "Press 2 Sen Yai - 45 Baht" << endl;
+    cout << "Press 3 Sen Mi - 45 Baht" << endl;
+    cout << "Press 4 Sen Mi Krob - 50 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "==============================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu4_3(order_list, name, " Sen Lek", 45);
+    }
+    else if(addon == 2)
+    {
+        additional_menu4_3(order_list, name, " Sen Yai", 45);
+    }
+    else if(addon == 3)
+    {
+        additional_menu4_3(order_list, name, " Sen Mi", 45);
+    }
+    else if(addon == 4)
+    {
+        additional_menu4_3(order_list, name, " Sen Mi Krob", 50);
+    }
+}
+
+void additional_menu4_3(vector<order_type>* order_list, string name, string name2, int price)
+{
+    int addon;
+    
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Tham Ma Da" << endl;
+    cout << "Press 2 Pi Set (+5 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "======================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu4_4(*order_list, name, name2, "", price + 0);
+    }
+    else if(addon == 2)
+    {
+        additional_menu4_4(*order_list, name, name2, " Pi Set", price + 5);
+    }
+}
+
+void additional_menu4_4(vector<order_type>& order_list, string name, string name2, string name3, int price)
+{
+    int qty;
+    order_type order;
+    order.name = name + name2 + name3;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void restaurant_menu5(vector<order_type>* order_list)
+{
+    int menu;
+
+    cout << "\n======== Suki ========" << endl;
+    cout << "Press 1 Suki Nam" << endl;
+    cout << "Press 2 Suki Haeng" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "==================================" << endl;
+
+    additional_menu5_1(order_list, menu);
+}
+
+void additional_menu5_1(vector<order_type>* order_list, int menu1)
+{
+    cout << "\nSelect Menu >> ", cin >> menu1;
+
+    if(menu1 == 1)
+    {
+        cout << "\n======== Suki Nam ========" << endl;
+        additional_menu5_2(order_list, "Suki Nam", 0);
+        cout << "================================" << endl;
+    }
+    else if(menu1 == 2)
+    {
+        cout << "\n======== Suki Haeng ========" << endl;
+        additional_menu5_2(order_list, "Suki Haeng", 0);
+        cout << "============================" << endl;
+    }
+}
+
+void additional_menu5_2(vector<order_type>* order_list, string name, int price)
+{
+    int addon;
+
+    cout << "Press 1 Muu - 40 Baht" << endl;
+    cout << "Press 2 Kai - 40 Baht" << endl;
+    cout << "Press 3 Kung - 45 Baht" << endl;
+    cout << "Press 4 Pra Muek - 45 Baht" << endl;
+    cout << "Press 5 Ta lay - 45 Baht" << endl;
+    cout << "Press 6 Ruem Mit - 50 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "==============================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu5_3(order_list, name, " Muu", 40);
+    }
+    else if(addon == 2)
+    {
+        additional_menu5_3(order_list, name, " Kai", 40);
+    }
+    else if(addon == 3)
+    {
+        additional_menu5_3(order_list, name, " Kung", 45);
+    }
+    else if(addon == 4)
+    {
+        additional_menu5_3(order_list, name, " Pra Muek", 45);
+    }
+    else if(addon == 5)
+    {
+        additional_menu5_3(order_list, name, " Ta lay", 45);
+    }
+    else if(addon == 6)
+    {
+        additional_menu5_3(order_list, name, " Ruem Mit", 50);
+    }
+}
+
+void additional_menu5_3(vector<order_type>* order_list, string name, string name2, int price)
+{
+    int addon;
+    
+    cout << "\n======== " << name << name2 << " " << price << " Baht" << " ========" << endl;
+    cout << "Press 1 Tham Ma Da" << endl;
+    cout << "Press 2 Pi Set (+5 Baht)" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "======================================" << endl;
+    cout << "\nAddon >> ", cin >> addon;
+
+    if(addon == 1)
+    {
+        additional_menu5_4(*order_list, name, name2, "", price + 0);
+    }
+    else if(addon == 2)
+    {
+        additional_menu5_4(*order_list, name, name2, " Pi Set", price + 5);
+    }
+}
+
+void additional_menu5_4(vector<order_type>& order_list, string name, string name2, string name3, int price)
+{
+    int qty;
+    order_type order;
+    order.name = name + name2 + name3;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
+}
+
+void drink_shop_menu6(vector<order_type> *order_list)
+{
+    cout << "\n============ Drink Shop ============" << endl;
+    cout << "Press 1 Nam Plao - 10 Baht" << endl;
+    cout << "Press 2 Nam Coke - 15 Baht" << endl;
+    cout << "Press 3 Nam Pep Si - 15 Baht" << endl;
+    cout << "Press 4 Nam Keaw - 15 Baht" << endl;
+    cout << "Press 5 Nam Daeng - 15 Baht" << endl;
+    cout << "Press 6 Nam Sprite - 15 Baht" << endl;
+    cout << "Press 7 Nam Kaeng Plao - 5 Baht" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "=====================================" << endl;
+
+    int choice;
+    cout << "Select Menu >> ", cin >> choice;
+    if(choice == 1) {
+        additional_menu6_1(*order_list,"Nam Plao", 10);
+    } else if(choice == 2) {
+        additional_menu6_1(*order_list,"Nam Coke", 15);
+    } else if(choice == 3) {
+        additional_menu6_1(*order_list,"Nam Pep Si", 15);
+    } else if(choice == 4) {
+        additional_menu6_1(*order_list,"Nam Kaew", 15);
+    } else if(choice == 5) {
+        additional_menu6_1(*order_list,"Nam Daeng", 15);
+    } else if(choice == 6) {
+        additional_menu6_1(*order_list,"Nam Sprite", 15);
+    } else if(choice == 7) {
+        additional_menu6_1(*order_list,"Nam Kaeng Plao", 5);
+    }
+}
+
+void additional_menu6_1(vector<order_type>& order_list, string name, int price)
+{
+    int qty;
+    order_type order;
+    order.name = name;
+    order.price = price;
+    cout << "Quantity >> ", cin >> qty;
+    total += price * qty;
+    order.qty = qty;
+
+    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
+
+    if(it != order_list.end()) {
+        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
+        order_list[distance(order_list.begin(), it)].qty += qty;
+    } else {
+        order_list.push_back(order);
+    }
 }
 
 string generateUniqueFilename() {
@@ -171,827 +859,24 @@ string generateUniqueFilename() {
     return uniqueFilename;
 }
 
-void additional_menu3_5(vector<order_type>& order_list,string name, int price) {
-    int qty;
-    order_type order;
-    order.name = name;
-    order.price = price;
-    cout << "QTY >> ", cin >> qty;
-    total += price * qty;
-    order.qty = qty;
-
-    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
-
-    if(it != order_list.end()) {
-        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
-        order_list[distance(order_list.begin(), it)].qty += qty;
-    } else {
-        order_list.push_back(order);
-    }
-
-    
-}
-
-void additional_menu3_4(vector<order_type>* order_list,string name, int price) {
-    cout << "\n----- Special or Normal -----" << endl;
-    cout << "\nPress 1 Special + 5 Bath" << endl;
-    cout << "\nPress 2 Normal" << endl;
-    cout << "\n----*-------%----+-----------" << endl;
-
-    int choice_additional_menu3;
-    cout << "Enter >> ", cin >> choice_additional_menu3;
-
-    if(choice_additional_menu3 == 1) {
-        additional_menu3_5(*order_list,name,price + 5);
-    } else if(choice_additional_menu3 == 2) {
-        additional_menu3_5(*order_list,name,price);
-    } else {
-        additional_menu3_5(*order_list,name,price);
-        alert_message("If not selected, it will be set to Normal.");
-    }
-}
-
-void additional_menu3_2(vector<order_type>* order_list,string name, int price) {
-    cout << "\n----- Choose meat -----" << endl;
-    cout << "\nPress 1 Mu Chin " << price + 15 << " Bath" << endl;
-    cout << "\nPress 2 Mu Sap " << price + 10 << " Bath" << endl;
-    cout << "\nPress 3 Nong Kai " << price + 15 << " Bath" << endl;
-    cout << "\nPress 4 Kai Chik " << price + 10 << " Bath" << endl;
-    cout << "\n-----*----------*-----" << endl;
-
-    int choice_additional_menu3;
-    cout << "Enter >> ", cin >> choice_additional_menu3;
-
-    if(choice_additional_menu3 == 1) {
-        additional_menu3_4(order_list,name,price + 15);
-    } else if(choice_additional_menu3 == 2) {
-        additional_menu3_4(order_list,name,price + 10);
-    } else if(choice_additional_menu3 == 3) {
-        additional_menu3_4(order_list,name,price + 15);
-    } else if(choice_additional_menu3 == 4) {
-        additional_menu3_4(order_list,name,price + 10);
-    }
-}
-
-void additional_menu3_1(vector<order_type>* order_list,string name, int price) {
-    
-    cout << "\n----- Choose noodles -----" << endl;
-    cout << "\nPress 1 Sen Lek" <<  endl;
-    cout << "\nPress 2 Sen Yai"<< endl;
-    cout << "\nPress 3 Sen Ma Ma" << endl;
-    cout << "\nPress 4 Sen Mi " << endl;
-    cout << "\nPress 0 Backward" << endl;
-    cout << "\n-----+----------+-----" << endl;
-
-    int choice_additional_menu3;
-    cout << "Enter >> ", cin >> choice_additional_menu3;
-    
-    if(choice_additional_menu3 == 1) {
-        additional_menu3_2(order_list,name,price + 9);
-    } else if(choice_additional_menu3 == 2) {
-        additional_menu3_2(order_list,name,price + 7);
-    } else if(choice_additional_menu3 == 3) {
-        additional_menu3_2(order_list,name,price + 7);
-    } else if(choice_additional_menu3 == 4) {
-        additional_menu3_2(order_list,name,price + 7);
-    } else if(choice_additional_menu3 == 0) {
-        total -= 40;
-    } else {
-        cout << "Invaild Choice" << endl;
-        total -= 40;
-    }
-}
-
-void restaurant_menu3(vector<order_type>* order_list) {
-    cout << "-" << setw(90) << setfill('-') << "-" << endl;
-    cout << setw(55) << setfill(' ') <<  "Welcome to Restaurant 3" << endl;
-    cout << setfill(' ') << setw(30) << "Press 1" <<  setw(20) << setfill(' ') << "Kuaitiao Nam Sai" << endl;
-    cout << setfill(' ') << setw(30) << "Press 2" <<  setw(20) << setfill(' ') << "Kuaitiao Namtok" << endl;
-    cout << setfill(' ') << setw(30) << "Press 3" <<  setw(20) << setfill(' ') << "Kuaitiao Tomyam" << endl;
-    cout << setfill(' ') << setw(30) << "Press 4" <<  setw(20) << setfill(' ') << "Kuaitiao Yentafo" << endl;
-    cout << setfill(' ') << setw(30) << "Press 0" <<  setw(20) << setfill(' ') << "Backward" << endl;
-    cout << "+" << setw(90) << setfill('-') << "+" << endl;
-
-    int choice_restaurant_menu3;
-
-    cout << "Please select food >> ", cin >> choice_restaurant_menu3;
-
-    if(choice_restaurant_menu3 == 1) {
-        additional_menu3_1(order_list,"Kuaitiao Nam Sai", 30);
-    } else if(choice_restaurant_menu3 == 2) {
-        additional_menu3_1(order_list,"Kuaitiao Namtok",35);
-    } else if(choice_restaurant_menu3 == 3) {
-        additional_menu3_1(order_list,"Kuaitiao Tomyam",40);
-    } else if(choice_restaurant_menu3 == 4) {
-        additional_menu3_1(order_list,"Kuaitiao Yentafo",40);
-    }
-}
-
-void drink_shop_menu4(vector<order_type> *order_list) {
-    cout << "Press 1 Nam Plao 10 Bath" << endl;
-    cout << "Press 2 Nam Pep Si 15 Bath" << endl;
-    cout << "Press 3 Namsom 15 Bath" << endl;
-    cout << "Press 4 Namkhaeng Plao 5 Bath" << endl;
-    cout << "Press 0 backward" << endl;
-
-    int choice;
-    cout << "Enter >> ", cin >> choice;
-    if(choice == 1) {
-        total += 10;
-        additional_menu3_5(*order_list,"Nam Plao", 10);
-    } else if(choice == 2) {
-        total += 15;
-        additional_menu3_5(*order_list,"Nam Pep si", 15);
-    } else if(choice == 3) {
-        total += 15;
-        additional_menu3_5(*order_list,"Namsom", 15);
-    } else if(choice == 4) {
-        total += 5;
-        additional_menu3_5(*order_list,"Namkhaeng", 5);
-    }
-}
-
-void menu_list(vector<order_type> *order_list) {
-    while (true) {
-    int choice_menu_list;
-
-    cout << "\n===========================" << endl;
-    cout << "Press 1 Restaurant " << endl;
-    cout << "Press 2 Food " << endl;
-    cout << "Press 3 Check bill " << endl;
-    cout << "Press 0 Close Program  " << endl;
-    cout << "===========================" << endl;
-
-    cout << "\nSelect Menu >> ", cin >> choice_menu_list;
-
-    if(choice_menu_list == 0) {
-        break;
-    } else if(choice_menu_list == 1) {
-        restaurant_list();
-    } else if(choice_menu_list == 2) {
-        if(check_status) {
-            if(restaurant_menu == 1) {
-                restaurant_menu1(order_list);
-            } else if(restaurant_menu == 2) {
-                restaurant_menu2();
-            } else if(restaurant_menu == 3) {
-                restaurant_menu3(order_list);
-            } else if(restaurant_menu == 4) {
-                drink_shop_menu4(order_list);
-            }
-        } else {
-            alert_message("Please choose a restaurant first.");
-        }
-     } else if(choice_menu_list == 3) {
-        check_bill(order_list);
-     }
-    }
-}
-
-
-int main() {
-    vector<order_type> order_list;
-    menu_list(&order_list);
-}
-
-void additional_menu1_1()
+void save_file_order(vector<order_type>* order_list, int total_ok)
 {
-    cout << "Press 1 Muu Sab - 40 Bath" << endl;
-    cout << "Press 2 Muu Chin - 40 Bath" << endl;
-    cout << "Press 3 Muu Krob - 40 Bath" << endl;
-    cout << "Press 4 Kai - 40 Bath" << endl;
-    cout << "Press 5 Nue - 40 Bath" << endl;
-    cout << "Press 6 Kung - 45 Bath" << endl;
-    cout << "Press 7 Pra Muek - 45 Bath" << endl;
-    cout << "Press 8 Ruem Mit - 45 Bath" << endl;
-}
-
-void additional_menu1_2(vector<order_type>* order_list, int addon2)
-{
-    cout << "Press 1 Rad Khao" << endl;
-    cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-    cout << "Press 3 Kab Khao" << endl;
-    cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-    cout << "\nPlease Addon >> ", cin >> addon2;
-
-    if(addon2 == 1 || addon2 == 3)
+    string filename = generateUniqueFilename();
+    ofstream outputFile(filename);
+    if (outputFile.is_open())
     {
-        additional_menu1_4(*order_list,"Phat Kra Phrao Tammada", 40);
-    }
-    else if(addon2 == 2 || addon2 == 4)
-    {
-        additional_menu1_4(*order_list,"Phat Kra Phrao Pi set", 45);
-    }
-}
-
-void additional_menu1_3(vector<order_type>* order_list, int addon2)
-{
-    cout << "Press 1 Rad Khao" << endl;
-    cout << "Press 2 Rad Khao Pi Set (+5 Bath)" << endl;
-    cout << "Press 3 Kab Khao" << endl;
-    cout << "Press 4 Kab Khao Pi Set (+5 Bath)" << endl;
-    cout << "\nPlease Addon >> ", cin >> addon2;
-
-    if(addon2 == 1 || addon2 == 3)
-    {
-        additional_menu1_4(*order_list,"Phat Kra Phrao Tammada", 45);
-    }
-    else if(addon2 == 2 || addon2 == 4)
-    {
-        additional_menu1_4(*order_list,"Phat Kra Phrao Pi set", 50);
-    }
-}
-
-void additional_menu1_4(vector<order_type>& order_list,string name, int price) {
-    int qty;
-    order_type order;
-    order.name = name;
-    order.price = price;
-    cout << "QTY >> ", cin >> qty;
-    total += price * qty;
-    order.qty = qty;
-
-    vector<order_type>::iterator it = find(order_list.begin(), order_list.end(), order);
-
-    if(it != order_list.end()) {
-        cout << "Found information" << order.name << " Index : " << distance(order_list.begin(), it) << endl;
-        order_list[distance(order_list.begin(), it)].qty += qty;
-    } else {
-        order_list.push_back(order);
-    }
-}
-
-void restaurant_menu1(vector<order_type>* order_list) {
-    int choice_restaurant_menu1;
-
-    cout << "\n===== Arr Han Tam Sang Tee Noi =====" << endl;
-    cout << "Press 1 Phat Kra Phrao" << endl;
-    cout << "Press 2 Phat Ka Na" << endl;
-    cout << "Press 3 Phat Prik Kaeng" << endl;
-    cout << "Press 4 Phat Phong Kra Ri" << endl;
-    cout << "Press 5 Tod Kra Tiem" << endl;
-    cout << "Press 6 Khao Pad" << endl;
-    cout << "Press 7 Khao Plao" << endl;
-    cout << "Press 0 Back" << endl;
-    cout << "==================================" << endl;
-
-    cout << "\nSelect Menu >> ", cin >> choice_restaurant_menu1;
-
-    if(choice_restaurant_menu1 == 1)
-    {
-        int addon1;
-
-        cout << "\n======== Phat Kra Phrao ========" << endl;
-        additional_menu1_1();
-        cout << "================================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
+        outputFile << "- Order Lists -" << endl;
+        for (const order_type& item : *order_list)
         {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Muu Sab (40 Bath) -" << endl;
-            additional_menu1_2(order_list, addon2);
+            int item_total = item.price * item.qty;
+            cout << item.name << " : " << item.price << " Baht" << endl;
+            cout << "Quantity : " << item.qty << endl;
+            cout << "Total : " << item_total << endl << endl;
         }
-        else if(addon1 == 2)
-        {
-            int addon2;
+        outputFile << endl;
+        outputFile << "Total Price : " << total_ok << " Baht" << endl;
 
-            cout << "\n- Phat Kra Phrao Muu Chin (40 Bath) -" << endl;
-            additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Muu Krob (40 Bath) -" << endl;
-            additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Kai (40 Bath) -" << endl;
-            additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Nue (40 Bath) -" << endl;
-            additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Kung (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Pra Muek (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Phat Kra Phrao Ruem Mit (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-    }
-    else if(choice_restaurant_menu1 == 2)
-    {
-        int addon1;
-
-        cout << "\n======== Phat Ka Na ========" << endl;
-        additional_menu1_1();
-        cout << "============================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Muu Sab (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 2)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Muu Chin (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Muu Krob (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Kai (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Nue (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Kung (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Pra Muek (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Phat Ka Na Ruem Mit (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-    }
-    else if(choice_restaurant_menu1 == 3)
-    {
-        int addon1;
-
-        cout << "\n======== Phat Prik Kaeng ========" << endl;
-        additional_menu1_1();
-        cout << "=================================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Muu Sab (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 2)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Muu Chin (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Muu Krob (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Kai (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Nue (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Kung (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Pra Muek (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Phat Prik Kaeng Ruem Mit (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-    }
-    else if(choice_restaurant_menu1 == 4)
-    {
-        int addon1;
-
-        cout << "\n======== Phat Phong Kra Ri ========" << endl;
-        additional_menu1_1();
-        cout << "===================================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Muu Sab (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 2)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Muu Chin (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Muu Krob (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Kai (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Nue (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Kung (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Pra Muek (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Phat Phong Kra Ri Ruem Mit (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-    }
-    else if(choice_restaurant_menu1 == 5)
-    {
-        int addon1;
-
-        cout << "\n======== Tod Kra Tiem ========" << endl;
-        additional_menu1_1();
-        cout << "==============================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            int addon2;
-
-            cout << "\n- Muu Sab Tod Kra Tiem (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 2)
-        {
-            int addon2;
-
-            cout << "\n- Muu Chin Tod Kra Tiem (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Muu Krob Tod Kra Tiem (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Kai Tod Kra Tiem (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Nue Tod Kra Tiem (40 Bath) -" << endl;
-           additional_menu1_2(order_list, addon2);
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Kung Tod Kra Tiem (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Pra Muek Tod Kra Tiem (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Ruem Mit Tod Kra Tiem (45 Bath) -" << endl;
-            additional_menu1_3(order_list, addon2);
-        }
-    }
-    else if(choice_restaurant_menu1 == 6)
-    {
-        int addon1;
-
-        cout << "\n======== Khao Phat ========" << endl;
-        additional_menu1_1();
-        cout << "============================" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Muu Sab (40 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-        }
-        else if(addon1 == 2)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Muu Chin (40 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Muu Krob (40 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-        }
-        else if(addon1 == 4)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Kai (40 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-        }
-        else if(addon1 == 5)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Nue (40 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 40;
-            }
-            else if(addon2 == 2)
-            {
-                total += 45;
-            }
-        }
-        else if(addon1 == 6)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Kung (45 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-        }
-        else if(addon1 == 7)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Pra Muek (45 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-        }
-        else if(addon1 == 8)
-        {
-            int addon2;
-
-            cout << "\n- Khao Phat Ruem Mit (45 Bath) -" << endl;
-            cout << "Press 1 Tam Ma Da" << endl;
-            cout << "Press 2 Pi Set (+5 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-
-            if(addon2 == 1)
-            {
-                total += 45;
-            }
-            else if(addon2 == 2)
-            {
-                total += 50;
-            }
-        }
-    }
-    else if(choice_restaurant_menu1 == 7)
-    {
-        int addon1;
-
-        cout << "\n======== Khao Plao ========" << endl;
-        cout << "Press 1 No Addon (10 Bath)" << endl;
-        cout << "Press 2 Khai Dao (+10 Bath)" << endl;
-        cout << "Press 3 Khai Jiew (+10 Bath)" << endl;
-        cout << "\nPlease Addon >> ", cin >> addon1;
-
-        if(addon1 == 1)
-        {
-            total += 10;
-        }
-        else if(addon1 == 2)
-        {
-            total += 20;
-        }
-        else if(addon1 == 3)
-        {
-            int addon2;
-
-            cout << "\n- Khao Khai Jiew (20 Bath) -" << endl;
-            cout << "Press 1 Muu Sab (+10 Bath)" << endl;
-            cout << "Press 2 Kung (+10 Bath)" << endl;
-            cout << "Press 3 Cha-om (+10 Bath)" << endl;
-            cout << "Press 4 Prik (+10 Bath)" << endl;
-            cout << "\nPlease Addon >> ", cin >> addon2;
-           
-            if(addon2 == 1)
-            {
-                total += 30;
-            }
-            else if(addon2 == 2)
-            {
-                total += 30;
-            }
-            else if(addon2 == 3)
-            {
-                total += 30;
-            }
-            else if(addon2 == 4)
-            {
-                total += 30;
-            }
-        }
-    }
-}
-
-
-
-
-
-void check_bill(vector<order_type>* order_list) {
-    int choice, promotion_code;
-
-    cout << "\n---- Check Bill ----" << endl;
-        for (const order_type& item : *order_list) {
-            cout << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
-        }
-        cout << endl;
-
-    // string filename = generateUniqueFilename();
-    // ofstream outputFile(filename);
-
-    // if (outputFile.is_open()) {
-    //     for (const order_type& item : *order_list) {
-    //         outputFile << item.name << ": " << item.price << " Bath " << item.qty << " QTY" << endl;
-    //     }
-
-    //     outputFile.close();
+        outputFile.close();
     //     cout << "Order list" << endl;
     //     ifstream inputFile(filename);
     //     if (inputFile.is_open()) {
@@ -1002,34 +887,37 @@ void check_bill(vector<order_type>* order_list) {
 
     //     inputFile.close(); 
     // }
-    // }
+    }
+}
 
-    cout << "Total Price >> " << total << endl;
+
+void check_bill(vector<order_type>* order_list) {
+    int choice, promotion_code, item_total;
+
+    cout << "\n==================== Check Bill ====================" << endl;
+    for (const order_type& item : *order_list)
+    {
+        item_total = item.price * item.qty;
+        cout << item.name << " : " << item.price << " Baht" << endl;
+        cout << "Quantity : " << item.qty << endl;
+        cout << "Total : " << item_total << endl << endl;
+    }
+    cout << ">> Total Price : " << total << " Baht <<" << endl;
 
     cout << "\nPress 1 Pay" << endl;
     cout << "Press 2 Promotion Code" << endl;
     cout << "Press 3 Cancel Order" << endl;
-    cout << "Press 0 Back" << endl;
-    cout << "Press >> ", cin >> choice;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "====================================================" << endl;
+    cout << "\nPress >> ", cin >> choice;
 
     if(choice == 1)
     {
         int choice2;
 
         cout << "\n- Confirm Order -" << endl;
-        cout << "Total Price >> " << total << endl;
-        cout << "KBANK - 0862105192" << endl;
-
-        cout << "\nPress 1 Payment Complete" << endl;
-        cout << "Press 0 Back" << endl;
-        cout << "Press >> ", cin >> choice2;
-
-        if(choice2 == 1)
-        {
-            cout << "\n>> Cooking. . . <<" << endl;
-
-            total = 0;
-        }
+        total_price(order_list, total);
+        
     }
     else if(choice == 2)
     {
@@ -1044,61 +932,24 @@ void check_bill(vector<order_type>* order_list) {
             discout = total * 10 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 10% <<" << endl;
-            cout << "Total Price >> " << total_code << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-                order_list->clear();
-            }
+            cout << "\n====== Discout 10% ======" << endl;
+            total_price(order_list, total_code);
         }
         else if(promotion_code == "dc25")
         {
             discout = total * 25 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 25% <<" << endl;
-            cout << "Total Price >> " << total_code << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-            }
+            cout << "\n====== Discout 25% ======" << endl;
+            total_price(order_list, total_code);
         }
         else if(promotion_code == "dc50")
         {
             discout = total * 50 / 100;
             total_code = total - discout;
 
-            cout << "\n>> Discout 50% <<" << endl;
-            cout << "Total Price >> " << total_code << endl;
-            cout << "KBANK - 0862105192" << endl;
-
-            cout << "\nPress 1 Payment Complete" << endl;
-            cout << "Press 0 Back" << endl;
-            cout << "Press >> ", cin >> choice2;
-
-            if(choice2 == 1)
-            {
-                cout << "\n>> Cooking. . . <<" << endl;
-
-                total = 0;
-            }
+            cout << "\n====== Discout 50% ======" << endl;
+            total_price(order_list, total_code);
         }
         else
         {
@@ -1111,7 +962,7 @@ void check_bill(vector<order_type>* order_list) {
 
         cout << "\n- Confirm to Cancel Order! -" << endl;
         cout << "Press 1 Confirm" << endl;
-        cout << "Press 0 Back" << endl;
+        cout << "<- Press Anything Number to Back" << endl;
         cout << "Press >> ", cin >> choice2;
 
         if(choice2 == 1)
@@ -1119,9 +970,27 @@ void check_bill(vector<order_type>* order_list) {
             cout << "\n>> Order Canceled <<" << endl;
 
             total = 0;
+            order_list->clear();
         }
     }
 }
-=======
-additional_menu3_2
->>>>>>> Jame
+
+void total_price(vector<order_type>* order_list, int total_code)
+{
+    int choice;
+
+    cout << ">> Total Price : " << total_code << " <<" << endl;
+    cout << "KBANK - 0862105192" << endl;
+
+    cout << "\nPress 1 Payment Complete" << endl;
+    cout << "<- Press Anything Number to Back" << endl;
+    cout << "Press >> ", cin >> choice;
+
+    if(choice == 1)
+    {
+        cout << "\n>> Cooking. . . <<" << endl;
+        save_file_order(order_list,total_code);
+        total = 0;
+        order_list->clear();
+    }
+}
