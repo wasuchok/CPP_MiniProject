@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include <vector>
 #include <fstream>
 #include <ctime>
@@ -61,6 +60,7 @@ void additional_menu6_1(vector<order_type>& order_list, string name, int price);
 
 
 void check_bill(vector<order_type>* order_list);
+void promotion(vector<order_type>* order_list);
 void total_price(vector<order_type>* order_list, int total_code);
 void save_file_order(vector<order_type>* order_list);
 
@@ -877,16 +877,6 @@ void save_file_order(vector<order_type>* order_list, int total_ok)
         outputFile << "Total Price : " << total_ok << " Baht" << endl;
 
         outputFile.close();
-    //     cout << "Order list" << endl;
-    //     ifstream inputFile(filename);
-    //     if (inputFile.is_open()) {
-    //     string line;
-    //     while (getline(inputFile, line)) {
-    //         cout << line << endl;
-    //     }
-
-    //     inputFile.close(); 
-    // }
     }
 }
 
@@ -921,40 +911,7 @@ void check_bill(vector<order_type>* order_list) {
     }
     else if(choice == 2)
     {
-        int choice2, total_code, discout;
-        string promotion_code;
-
-        cout << "\n- Promotion -" << endl;
-        cout << "Promotion Code >> ", cin >> promotion_code;
-
-        if(promotion_code == "dc10")
-        {
-            discout = total * 10 / 100;
-            total_code = total - discout;
-
-            cout << "\n====== Discout 10% ======" << endl;
-            total_price(order_list, total_code);
-        }
-        else if(promotion_code == "dc25")
-        {
-            discout = total * 25 / 100;
-            total_code = total - discout;
-
-            cout << "\n====== Discout 25% ======" << endl;
-            total_price(order_list, total_code);
-        }
-        else if(promotion_code == "dc50")
-        {
-            discout = total * 50 / 100;
-            total_code = total - discout;
-
-            cout << "\n====== Discout 50% ======" << endl;
-            total_price(order_list, total_code);
-        }
-        else
-        {
-            cout << "Invalid Code!" << endl;
-        }
+        promotion(order_list);
     }
     else if(choice == 3)
     {
@@ -972,6 +929,45 @@ void check_bill(vector<order_type>* order_list) {
             total = 0;
             order_list->clear();
         }
+    }
+}
+
+void promotion(vector<order_type>* order_list)
+{
+    int choice2, discout, total_code;
+    string promotion_code;
+
+    cout << "\n- Promotion -" << endl;
+    cout << "Promotion Code >> ", cin >> promotion_code;
+
+    if(promotion_code == "dc10")
+    {
+        discout = total * 10 / 100;
+        total_code = total - discout;
+
+        cout << "\n====== Discout 10% ======" << endl;
+        total_price(order_list, total_code);
+    }
+    else if(promotion_code == "dc25")
+    {
+        discout = total * 25 / 100;
+        total_code = total - discout;
+
+        cout << "\n====== Discout 25% ======" << endl;
+        total_price(order_list, total_code);
+    }
+    else if(promotion_code == "dc50")
+    {
+        discout = total * 50 / 100;
+        total_code = total - discout;
+
+        cout << "\n====== Discout 50% ======" << endl;
+        total_price(order_list, total_code);
+    }
+    else
+    {
+        cout << "Invalid Code!" << endl;
+        promotion(order_list);
     }
 }
 
