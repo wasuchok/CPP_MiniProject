@@ -1,0 +1,27 @@
+=========================== Ordered Lists =========================
+Phat Phong Kra Ri Ruem Mit Khai Jeaw Rad Khao Pi Set : 65 Baht
+Quantity : 2
+Total : 130
+
+Khao Man Kai Tom&Yang&Thot Pi Set : 60 Baht
+Quantity : 4
+Total : 240
+
+Guay Tiew Yentafo Sen Ba Mi Muu Chin Pi set : 57 Baht
+Quantity : 6
+Total : 342
+
+Phat Si Ew Sen Mi Krob Pi Set : 55 Baht
+Quantity : 8
+Total : 440
+
+Suki Haeng Pra Muek Pi Set : 50 Baht
+Quantity : 10
+Total : 500
+
+Nam Sprite : 15 Baht
+Quantity : 15
+Total : 225
+===================================================================
+
+					>> Total Price : 1408 Baht <<
